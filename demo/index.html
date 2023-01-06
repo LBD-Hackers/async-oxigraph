@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href='styles.css' />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
+
     <link href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css' rel='stylesheet'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/base16-dark.min.css' rel='stylesheet'>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js'></script>
@@ -18,7 +20,11 @@
 </head>
 
 <body>
+    <a class="github-fork-ribbon" href="https://github.com/LBD-Hackers/async-oxigraph" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
+
     <h1>Oxigraph async</h1>
+
+    <p>This is a demonstration of how Oxigraph can be executed in the background using a web worker implementation. Try it with one of your own RDF files in NTriples format!</p>
 
     <div class="col">
 
@@ -94,12 +100,8 @@
             mode: 'sparql',
             theme: 'base16-dark',
             value: `PREFIX bot: <https://w3id.org/bot#> 
-PREFIX ex: <https://ex.com/> 
 
-CONSTRUCT{
-    ?s a bot:Space .
-    <<?s a bot:Space>> ex:created ?created
-}
+SELECT *
 WHERE { 
     ?s a bot:Space .
 }`
@@ -196,10 +198,17 @@ WHERE {
             const bindings = [];
             const results = store.query(queryPanel.getValue());
             for (const binding of results) {
-                bindings.push(binding.get("space").value);
+                try{
+                    bindings.push(binding.get("s").value);
+                }catch(err){
+                    errorElement.innerHTML = "NB! The demo only supports extraction of ?s variable bindings for select queries for now";
+                    throw err;
+                }
             }
 
-            setQueryResult(bindings);
+            resultContainer.style.visibility = "visible";
+            resultPanel.setValue(JSON.stringify(bindings, null, "\t"));
+
         }
 
         // WEB WORKER QUERY
@@ -208,8 +217,9 @@ WHERE {
 
             // const mimetype = "text/turtle"; // Only used for construct queries
             const mimetype = "application/ld+json"; // Only used for construct queries (Not working for SPARQL*)
+            let response
             try{
-                const response = await asyncOxigraph.query(queryPanel.getValue(), mimetype);
+                response = await asyncOxigraph.query(queryPanel.getValue(), mimetype);
             }catch(err){
                 console.log(err);
                 errorElement.innerHTML = err.toString();
