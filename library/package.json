@@ -1,0 +1,13 @@
+{
+    "name": "async-oxigraph",
+    "version": "0.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "build": "tsup src/index.ts --format esm"
+    },
+    "type": "module",
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "scripts-bundle",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c ./rollup.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "oxigraph": "^0.3.10",
+    "sparqlalgebrajs": "^4.0.5"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^24.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1"
+  }
+}
