@@ -16,7 +16,28 @@ Better documentation will come! For now, check the demo source code in `demo/ind
 
 ## Use
 
+**NB!** not on npm yet
+`npm i --save async-oxigraph`
 
+```javascript
+import { AsyncOxigraph } from 'async-oxigraph';
+
+(async function () {
+    
+    const ao = new AsyncOxigraph("./path-to/worker.js");
+
+    await ao.init("./path-to-wasm-relative-to-worker.wasm"); // Default is same folder as worker.js
+
+    // Load data in background
+    const loadResponse = await ao.load(triples, mimetype, baseURI, graphURI);
+
+    // Query (responseMimetype only used for construct)
+    const queryResponse = await asyncOxigraph.query(query, responseMimetype);
+
+})();
+```
+
+But really, take a look at the demo :)
 
 ### Backlog
 
