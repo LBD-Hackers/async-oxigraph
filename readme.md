@@ -34,7 +34,7 @@ import { AsyncOxigraph } from 'async-oxigraph';
     const loadResponse = await ao.load(triples, mimetype, baseURI, graphURI);
 
     // Query (responseMimetype only used for construct)
-    const queryResponse = await asyncOxigraph.query(query, responseMimetype);
+    const queryResponse = await ao.query(query, responseMimetype);
 
 })();
 ```
