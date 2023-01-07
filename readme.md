@@ -19,6 +19,8 @@ Better documentation will come! For now, check the demo source code in `demo/ind
 **NB!** not on npm yet
 `npm i --save async-oxigraph`
 
+Copy `worker.js`, `scripts.bundle.js` and `web_bg.wasm` to your assets folder.
+
 ```javascript
 import { AsyncOxigraph } from 'async-oxigraph';
 
