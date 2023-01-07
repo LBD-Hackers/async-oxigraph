@@ -1,18 +1,3 @@
-function _mergeNamespaces(n, m) {
-    m.forEach(function (e) {
-        e && typeof e !== 'string' && !Array.isArray(e) && Object.keys(e).forEach(function (k) {
-            if (k !== 'default' && !(k in n)) {
-                var d = Object.getOwnPropertyDescriptor(e, k);
-                Object.defineProperty(n, k, d.get ? d : {
-                    enumerable: true,
-                    get: function () { return e[k]; }
-                });
-            }
-        });
-    });
-    return Object.freeze(n);
-}
-
 let wasm;
 
 const heap = new Array(32).fill(undefined);
@@ -374,7 +359,7 @@ function getArrayU8FromWasm0(ptr, len) {
 }
 /**
 */
-class BlankNode$2 {
+let BlankNode$2 = class BlankNode {
 
     static __wrap(ptr) {
         const obj = Object.create(BlankNode$2.prototype);
@@ -451,10 +436,10 @@ class BlankNode$2 {
             heap[stack_pointer++] = undefined;
         }
     }
-}
+};
 /**
 */
-class DefaultGraph$2 {
+let DefaultGraph$2 = class DefaultGraph {
 
     static __wrap(ptr) {
         const obj = Object.create(DefaultGraph$2.prototype);
@@ -531,10 +516,10 @@ class DefaultGraph$2 {
             heap[stack_pointer++] = undefined;
         }
     }
-}
+};
 /**
 */
-class Literal$2 {
+let Literal$2 = class Literal {
 
     static __wrap(ptr) {
         const obj = Object.create(Literal$2.prototype);
@@ -633,10 +618,10 @@ class Literal$2 {
             heap[stack_pointer++] = undefined;
         }
     }
-}
+};
 /**
 */
-class NamedNode$2 {
+let NamedNode$2 = class NamedNode {
 
     static __wrap(ptr) {
         const obj = Object.create(NamedNode$2.prototype);
@@ -713,10 +698,10 @@ class NamedNode$2 {
             heap[stack_pointer++] = undefined;
         }
     }
-}
+};
 /**
 */
-class Quad$2 {
+let Quad$2 = class Quad {
 
     static __wrap(ptr) {
         const obj = Object.create(Quad$2.prototype);
@@ -821,7 +806,7 @@ class Quad$2 {
             heap[stack_pointer++] = undefined;
         }
     }
-}
+};
 /**
 */
 class Store {
@@ -1060,7 +1045,7 @@ class Store {
 }
 /**
 */
-class Variable$2 {
+let Variable$2 = class Variable {
 
     static __wrap(ptr) {
         const obj = Object.create(Variable$2.prototype);
@@ -1137,7 +1122,7 @@ class Variable$2 {
             heap[stack_pointer++] = undefined;
         }
     }
-}
+};
 
 async function load(module, imports) {
     if (typeof Response === 'function' && module instanceof Response) {
@@ -1449,7 +1434,7 @@ var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof win
 var Wildcard$2 = {};
 
 // Wildcard constructor
-class Wildcard$1 {
+let Wildcard$1 = class Wildcard {
   constructor() {
     return WILDCARD || this;
   }
@@ -1457,7 +1442,7 @@ class Wildcard$1 {
   equals(other) {
     return other && (this.termType === other.termType);
   }
-}
+};
 
 Object.defineProperty(Wildcard$1.prototype, 'value', {
   enumerable: true,
@@ -3726,7 +3711,7 @@ let dataFactoryCounter = 0;
 /**
  * A factory for instantiating RDF terms and quads.
  */
-class DataFactory$1 {
+let DataFactory$1 = class DataFactory {
     constructor(options) {
         this.blankNodeCounter = 0;
         options = options || {};
@@ -3832,7 +3817,7 @@ class DataFactory$1 {
     resetBlankNodeCounter() {
         this.blankNodeCounter = 0;
     }
-}
+};
 DataFactory$2.DataFactory = DataFactory$1;
 
 (function (exports) {
@@ -3901,9 +3886,196 @@ var sparql = {
   Wildcard: Wildcard,
 };
 
-var sparql$1 = /*#__PURE__*/_mergeNamespaces({
-    __proto__: null,
-    default: sparql
-}, [sparql]);
+function getSelectQueryVariables(queryDetails) {
+    // If no wildcard
+    if (queryDetails.variables[0].value != "*") {
+        return queryDetails.variables.map(function (v) { return v.value; });
+    }
+    // If wildcard we need to traverse the query in order to find the variables
+    var variables = new Set();
+    searchDeeper(queryDetails.where, variables);
+    // COULD ALSO GET IT DIRECTLY FROM QUERY
+    // let variables= new Set();
+    // query.split("?").splice(1)
+    //     .map(item => item.trim().split(/[^A-Za-z]/)[0])
+    //     .forEach(item => variables.add(item));
+    // return Array.from(variables);
+    return Array.from(variables);
+}
+function searchDeeper(item, variables) {
+    if (Array.isArray(item)) {
+        item.forEach(function (x) { return searchDeeper(x, variables); });
+    }
+    else {
+        if (item.type == "bgp") {
+            item.triples.forEach(function (quad) {
+                processQuad(quad, variables);
+            });
+        }
+        else if (item.type == "optional") {
+            searchDeeper(item.patterns, variables);
+        }
+        else if (item.type == "bind") {
+            variables.add(item.variable.value);
+        }
+        else if (item.type == "values") {
+            Object.keys(item.values[0]).forEach(function (v) { return variables.add(v.split("?")[1]); });
+        }
+    }
+}
+function processQuad(quad, variables) {
+    Object.keys(quad).forEach(function (key) {
+        if (quad[key].termType == "Variable")
+            variables.add(quad[key].value);
+        // In SPARQL* the spo can all be quads themselves, and then we need to go one step deeper
+        else if (quad[key].termType == "Quad")
+            processQuad(quad[key], variables);
+    });
+}
 
-export { web as oxigraph, sparql$1 as sparqljs };
+// 3rd party scripts
+// Other scripts that will be part of the bundle
+/**
+ * Takes a SPARQL query and returns its content in JSON format
+ * @param {*} query the SPARQL query
+ * @returns
+ */
+function getQueryDetails(query) {
+    var parser = new sparql.Parser({ sparqlStar: true });
+    try {
+        return parser.parse(query);
+    }
+    catch (err) {
+        if (err.toString().indexOf("SPARQL*") != -1) {
+            return {
+                type: "query",
+                queryType: "CONSTRUCT",
+                sparqlStar: true
+            };
+        }
+        else {
+            throw "Couldn't get query details: " + err.toString();
+        }
+    }
+}
+/**
+ * Processes a query response as returned by Oxigraph so it's easier to work with in a JavaScript
+ * based application
+ * @param {*} results the raw Oxigraph results
+ * @param {*} queryDetails Query details in JSON format as returned by the getQueryDetails method
+ * @param {*} mimetype used for CONSTRUCT queries to describe the desired serialization of the results
+ * @returns
+ */
+function processQueryResponse(results, queryDetails, mimetype) {
+    switch (queryDetails.queryType) {
+        case "SELECT":
+            var variables = getSelectQueryVariables(queryDetails);
+            return buildSelectQueryResponse(results, variables);
+        case "ASK":
+            return buildAskQueryResponse(results);
+        case "CONSTRUCT":
+            return buildConstructQueryResponse(results, mimetype, queryDetails.sparqlStar);
+    }
+}
+function buildAskQueryResponse(result) {
+    return [result, 1];
+}
+function buildConstructQueryResponse(quads, mimetype, sparqlStar) {
+    var qRes = quads;
+    if (mimetype == undefined || mimetype == "text/turtle") {
+        var tempStore = new Store(quads);
+        qRes = tempStore.dump("text/turtle", undefined);
+    }
+    else if (mimetype == "application/ld+json") {
+        if (sparqlStar)
+            throw "SPARQL* not supported for JSON-LD";
+        var arr = [];
+        for (var _i = 0, quads_1 = quads; _i < quads_1.length; _i++) {
+            var quad = quads_1[_i];
+            arr.push(quadToJSONLDObject(quad));
+        }
+        qRes = arr;
+    }
+    return [qRes, quads.length];
+}
+function buildSelectQueryResponse(results, variables) {
+    var bindings = [];
+    var doc = {
+        head: { vars: variables },
+        results: { bindings: bindings }
+    };
+    var termTypeMap = {
+        NamedNode: "uri",
+        Literal: "literal"
+    };
+    var resultCount = 0;
+    var _loop_1 = function (result) {
+        resultCount++;
+        // Object to hold the new binding results
+        var binding = {};
+        variables.forEach(function (variable) {
+            binding[variable] = {};
+            var node;
+            try {
+                node = result.get(variable);
+            }
+            catch (err) {
+                console.log(err);
+            }
+            if (node != undefined) {
+                binding[variable].value = node.value;
+                binding[variable].type = termTypeMap[node.termType];
+                if (binding[variable].type == "literal") {
+                    if (node.language != "") {
+                        binding[variable]["xml:lang"] = node.language;
+                    }
+                    else {
+                        binding[variable].datatype = node.datatype.value;
+                    }
+                }
+            }
+        });
+        bindings.push(binding);
+    };
+    for (var _i = 0, results_1 = results; _i < results_1.length; _i++) {
+        var result = results_1[_i];
+        _loop_1(result);
+    }
+    return [doc, resultCount];
+}
+function quadToJSONLDObject(quad) {
+    console.log(quad);
+    var obj = { "@id": quad.subject.value };
+    if (quad.predicate.value == "http://www.w3.org/1999/02/22-rdf-syntax-ns#type") {
+        obj["@type"] = quad.object.value;
+    }
+    else {
+        if (quad.object.termType == "NamedNode") {
+            obj[quad.predicate.value] = { "@id": quad.object.value };
+        }
+        else if (quad.object.termType == "Literal") {
+            if (quad.object.datatype.value == "http://www.w3.org/2001/XMLSchema#string") {
+                obj[quad.predicate.value] = quad.object.value;
+            }
+            if (quad.object.datatype.value == "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString") {
+                obj[quad.predicate.value] = {
+                    "@value": quad.object.value,
+                    "@language": quad.object.language
+                };
+            }
+            else {
+                obj[quad.predicate.value] = {
+                    "@value": quad.object.value,
+                    "@type": quad.object.datatype.value
+                };
+            }
+        }
+        else {
+            console.log("Unsupported object");
+            console.log(quad);
+        }
+    }
+    return obj;
+}
+
+export { getQueryDetails, web as oxigraph, processQueryResponse };

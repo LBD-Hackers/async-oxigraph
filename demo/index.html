@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href='styles.css' />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
 
     <link href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css' rel='stylesheet'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/base16-dark.min.css' rel='stylesheet'>
@@ -16,20 +17,36 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/turtle/turtle.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/javascript/javascript.js'></script>
 
+    <script src="https://unpkg.com/jsonld@1.0.0/dist/jsonld.min.js"></script>
+
     <title>Oxigraph async</title>
 </head>
 
 <body>
-    <a class="github-fork-ribbon" href="https://github.com/LBD-Hackers/async-oxigraph" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
+    <a class="github-fork-ribbon" href="https://github.com/LBD-Hackers/async-oxigraph" data-ribbon="Fork me on GitHub"
+        title="Fork me on GitHub">Fork me on GitHub</a>
 
     <h1>Oxigraph async</h1>
 
-    <p>This is a demonstration of how Oxigraph can be executed in the background using a web worker implementation. Try it with one of your own RDF files in NTriples format!</p>
+    <p>This is a demonstration of how Oxigraph can be executed in the background using a web worker implementation. Try
+        it with one of your own RDF files.</p>
+    
+    <br>
 
     <div class="col">
 
-        <input type="button" class="button-6" role="button" id="get_file" value="Load Triples" onclick="document.getElementById('fileInput').click()">
-        <input type="file" accept=".ttl,.nq" id="fileInput" style="display: none;">
+        <label for="mimetype">RDF serialization</label>
+        <select name="mimetype" id="mimetype">
+            <option value="text/turtle">Turtle</option>
+            <option value="application/ld+json">JSON-LD</option>
+            <option value="application/n-triples">NTriples</option>
+            <option value="application/n-quads">NQuads</option>
+            <option value="application/rdf+xml">RDF/XML</option>
+        </select>
+
+        <input type="button" class="button-6" role="button" id="get_file" value="Load Triples"
+            onclick="document.getElementById('fileInput').click()">
+        <input type="file" accept=".ttl,.nt,.nq,.json,.xml" id="fileInput" style="display: none;">
 
         <p id="message"></p>
         <p id="error" style="color: red;"></p>
@@ -46,11 +63,20 @@
             <div id="query-options" class="col" style="visibility: hidden;">
 
                 <div class="editorContainer"></div>
-                
+
                 <div class="row">
                     <button id="queryGraph" class="button-6" role="button">Query</button>
                     <button id="close" class="button-6" role="button">Close graph</button>
                 </div>
+
+                <label for="mimetype">CONSTRUCT result serialization</label>
+                <select name="resultMimetype" id="resultMimetype">
+                    <option value="text/turtle">Turtle</option>
+                    <option value="application/ld+json">JSON-LD</option>
+                    <option value="application/n-triples">NTriples</option>
+                    <option value="application/n-quads">NQuads</option>
+                    <option value="application/rdf+xml">RDF/XML</option>
+                </select>
 
                 <div class="resultContainer" style="visibility: hidden;"></div>
 
@@ -60,6 +86,7 @@
 
     </div>
 
+    <script src="./assets/scripts.bundle.js"></script>
     <script type="importmap">
         {
           "imports": {
@@ -72,11 +99,15 @@
 
         import init, { Store, namedNode, literal, triple } from 'oxigraph';
         import { AsyncOxigraph } from '../library/dist/index.js';
+        import { startStopwatch, resetStopwatch, stopStopwatch, getStopwatchTime } from './stopwatch.js';
 
         let file;
+        let mimetype;
         let store;
         let asyncOxigraph;
 
+        let mimetypeElement = document.getElementById('mimetype');
+        let resultMimetypeElement = document.getElementById('resultMimetype');
         let messageElement = document.getElementById('message');
         let errorElement = document.getElementById('error');
         let operationsElement = document.getElementById('operations');
@@ -87,9 +118,9 @@
         document.querySelector('#run-sync').addEventListener('click', runSync);
         document.querySelector('#run-async').addEventListener('click', runAsync);
         document.querySelector('#queryGraph').addEventListener('click', () => {
-            if(store != undefined){
+            if (store != undefined) {
                 queryStore();
-            }else if(asyncOxigraph != undefined){
+            } else if (asyncOxigraph != undefined) {
                 queryWorker()
             }
         });
@@ -103,7 +134,7 @@
 
 SELECT *
 WHERE { 
-    ?s a bot:Space .
+    ?s a ?class
 }`
         });
 
@@ -113,23 +144,35 @@ WHERE {
             theme: 'base16-dark'
         });
 
-        async function getFile(event){
+        async function getFile(event) {
+
+            // Save mimetype
+            mimetype = mimetypeElement.value;
+
+            // Save file
             const fileList = event.target.files;
             file = fileList[0];
-            const sizeInMB = (file.size / (1024*1024)).toFixed(2);
+
+            // Get stats
+            const sizeInMB = (file.size / (1024 * 1024)).toFixed(2);
             messageElement.innerHTML = `Got file "${file.name}" (${sizeInMB} MB)`;
             document.getElementById("operations").style.visibility = "visible";
         }
 
         // TRADITIONAL SYNC OXIGRAPH
-        async function runSync(){
+        async function runSync() {
 
             closeWorker();
 
             messageElement.innerHTML = `Loading file into a triplestore using main thread (UI is blocked now!)`;
 
             // Get file as string
-            const nq = await getFileContent(file);
+            let triples = await getFileContent(file);
+
+            if(mimetype == "application/ld+json"){
+                triples = await jsonld.toRDF(JSON.parse(triples), {format: 'application/n-quads'});
+                mimetype = "application/n-quads";
+            }
 
             resetStopwatch();
             startStopwatch();
@@ -139,11 +182,11 @@ WHERE {
             await init("./assets/web_bg.wasm");
 
             store = new Store();
-            store.load(nq, "application/n-triples", undefined, undefined);
+            store.load(triples, mimetype, undefined, undefined);
 
             const t2 = new Date();
             const dt = Math.abs(t2 - t1) / 1000;
-            const time = getStopwatchTime(Math.abs(t2 - t1)/10);
+            const time = getStopwatchTime(Math.abs(t2 - t1) / 10);
             document.getElementById('stopwatch').innerHTML = time;
             messageElement.innerHTML = `Loaded ${store.size} triples in ${dt} seconds.`;
 
@@ -154,16 +197,20 @@ WHERE {
         }
 
         // USING WEB WORKER
-        async function runAsync(){
+        async function runAsync() {
 
             store = undefined;
+            document.getElementById("close").style.visibility = "visible";
 
             messageElement.innerHTML = `Loading file into a triplestore using web worker (background process)`;
 
-            console.log("Async")
-
             // Get file as string
-            const nq = await getFileContent(file);
+            let triples = await getFileContent(file);
+
+            if(mimetype == "application/ld+json"){
+                triples = await jsonld.toRDF(JSON.parse(triples), {format: 'application/n-quads'});
+                mimetype = "application/n-quads";
+            }
 
             resetStopwatch();
             startStopwatch();
@@ -172,13 +219,13 @@ WHERE {
 
             // Get async oxigraph class
             asyncOxigraph = new AsyncOxigraph("./assets/worker.js");
-            
+
             // Init webassebbly (Path is relative to location of worker)
             // Per default it will expect a web_bg.wasm file at same location as worker
             await asyncOxigraph.init();
-            
+
             // Load data
-            const response = await asyncOxigraph.load(nq, "application/n-triples", undefined, undefined);
+            const response = await asyncOxigraph.load(triples, mimetype, undefined, undefined);
 
             const t2 = new Date();
             const dt = Math.abs(t2 - t1) / 1000;
@@ -192,55 +239,78 @@ WHERE {
         }
 
         // NORMAL QUERY
-        function queryStore(){
-            if(store == undefined) return;
+        function queryStore() {
+            if (store == undefined) return;
 
-            const bindings = [];
-            const results = store.query(queryPanel.getValue());
-            for (const binding of results) {
-                try{
-                    bindings.push(binding.get("s").value);
-                }catch(err){
-                    errorElement.innerHTML = "NB! The demo only supports extraction of ?s variable bindings for select queries for now";
-                    throw err;
-                }
+            const responseMimetype = resultMimetypeElement.value;
+
+            const queryDetails = scripts.getQueryDetails(queryPanel.getValue());
+            const type = queryDetails.type;
+
+            // DO QUERY
+            const t1 = new Date();
+            let results;
+            if (type == "update") {
+                const s1 = store.size;
+                store.update(queryPanel.getValue());
+                const s2 = store.size;
+            }
+            else if (type == "query") {
+                results = store.query(queryPanel.getValue());
+            }
+            const t2 = new Date();
+            const timeInSeconds = Math.abs(t2 - t1) / 1000;
+
+            // DO POST PROCESSING
+            let msg;
+            if (type == "update") {
+                results = { difference: results };
+                msg = results > 0
+                    ? `Added ${results} triples to the store in ${timeInSeconds} seconds.`
+                    : `Removed ${Math.abs(results)} triples from the store in ${timeInSeconds} seconds.`;
+                if (results == 0) msg = `Nothing was added. Operation took ${timeInSeconds} seconds.`;
+            }
+            else if (type == "query") {
+                const t3 = new Date();
+                const [res, resultCount] = scripts.processQueryResponse(results, queryDetails, responseMimetype);
+                results = res;
+                const t4 = new Date();
+                const postProcessingTimeInSeconds = Math.abs(t4 - t3) / 1000;
+                msg = `Got ${resultCount} results in ${timeInSeconds} seconds. Post processing took ${postProcessingTimeInSeconds} seconds.`;
             }
 
-            resultContainer.style.visibility = "visible";
-            resultPanel.setValue(JSON.stringify(bindings, null, "\t"));
+            messageElement.innerHTML = msg;
+
+            showQueryResult(results, queryDetails.queryType, responseMimetype);
 
         }
 
         // WEB WORKER QUERY
-        async function queryWorker(){
-            if(asyncOxigraph == undefined) return;
+        async function queryWorker() {
+            if (asyncOxigraph == undefined) return;
 
-            // const mimetype = "text/turtle"; // Only used for construct queries
-            const mimetype = "application/ld+json"; // Only used for construct queries (Not working for SPARQL*)
-            let response
-            try{
-                response = await asyncOxigraph.query(queryPanel.getValue(), mimetype);
-            }catch(err){
+            const responseMimetype = resultMimetypeElement.value;
+
+            let response;
+            try {
+                response = await asyncOxigraph.query(queryPanel.getValue(), responseMimetype);
+            } catch (err) {
                 console.log(err);
                 errorElement.innerHTML = err.toString();
             }
 
+            const queryDetails = scripts.getQueryDetails(queryPanel.getValue());
+            showQueryResult(response.data, queryDetails.queryType, responseMimetype);
+
             messageElement.innerHTML = response.message;
-
-            resultContainer.style.visibility = "visible";
-            resultPanel.setOption("mode", mimetype);
-
-            if(mimetype == "text/turtle"){
-                resultPanel.setValue(response.data);
-            }else{
-                resultPanel.setValue(JSON.stringify(response.data, null, "\t"));
-            }
 
         }
 
-        function closeWorker(){
+        function closeWorker() {
             // Close after we are finished (NB! Then it is no longer queryable)
-            if(asyncOxigraph == undefined) return;
+            if (asyncOxigraph == undefined) return;
+
+            document.getElementById("close").style.visibility = "hidden";
 
             asyncOxigraph.close();
 
@@ -249,21 +319,32 @@ WHERE {
             setQueryPanelVisibility();
         }
 
-        function setQueryPanelVisibility(){
-            if(store != undefined || asyncOxigraph != undefined){
-                document.getElementById("query-options").style.visibility = "visible";
-                if(store != undefined){
-                    document.getElementById("close").style.visibility = "hidden";                    
-                }
+        function showQueryResult(result, queryType, resultMimetype){
+            resultContainer.style.visibility = "visible";
+            if(queryType == "CONSTRUCT" && resultMimetype != "application/ld+json"){
+                resultPanel.setOption("mode", "text/turtle");
+                resultPanel.setValue(result);
             }else{
+                resultPanel.setOption("mode", "application/ld+json");
+                resultPanel.setValue(JSON.stringify(result, null, "\t"));
+            }
+        }
+
+        function setQueryPanelVisibility() {
+            if (store != undefined || asyncOxigraph != undefined) {
+                document.getElementById("query-options").style.visibility = "visible";
+                if (store != undefined) {
+                    document.getElementById("close").style.visibility = "hidden";
+                }
+            } else {
                 document.getElementById("query-options").style.visibility = "hidden";
                 document.querySelector('.resultContainer').style.visibility = "hidden";
             }
         }
 
-        function setQueryResult(bindings){
+        function setQueryResult(bindings) {
             const qResElement = document.getElementById("query-results");
-            if(qResElement){
+            if (qResElement) {
                 qResElement.style.visibility = "visible";
                 qResElement.innerHTML = "";
                 bindings.forEach(binding => {
@@ -274,7 +355,7 @@ WHERE {
             }
         }
 
-        async function getFileContent(file){
+        async function getFileContent(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
                 reader.addEventListener('load', () => {
@@ -282,36 +363,6 @@ WHERE {
                 }, false);
                 reader.readAsText(file, "utf-8");
             });
-        }
-
-        // STOP WATCH
-
-        let interval;
-        let elapsedTime = 0;
-
-        function startStopwatch() {
-            interval = setInterval(() => {
-                elapsedTime++;
-                const time = getStopwatchTime(elapsedTime);
-                document.getElementById('stopwatch').innerHTML = time;
-            }, 10);
-        }
-
-        function stopStopwatch() {
-            clearInterval(interval);
-        }
-
-        function resetStopwatch() {
-            elapsedTime = 0;
-            document.getElementById('stopwatch').innerHTML = '00:00.000';
-        }
-
-        function getStopwatchTime(elapsedTime) {
-            const minutes = Math.floor((elapsedTime % 360000) / 6000);
-            const seconds = Math.floor((elapsedTime % 6000) / 100);
-            const milliseconds = elapsedTime % 100;
-
-            return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}.${milliseconds.toString().padStart(3, '0')}`;
         }
 
     </script>

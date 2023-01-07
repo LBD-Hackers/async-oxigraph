@@ -1,6 +1,15 @@
+/**
+ * Oxigraph async worker
+ * 
+ * This worker allows you to have an Oxigraph instance running as a worker process and thereby
+ * you will not block your browser's main thread while doing heavy operations like loading triples
+ * into an Oxigraph store
+ */
+
+// Globals
 let store;
 
-importScripts('./scripts.worker.js');
+importScripts('./scripts.bundle.js');
 self.addEventListener('message', async (ev) => {
 
     // Input
@@ -34,7 +43,11 @@ self.addEventListener('message', async (ev) => {
 async function init(payload, result){
     // Per default, it expects the wasm file to be in the same folder
     const wasmPath = payload.wasmPath ?? "./web_bg.wasm";
-    await scripts.oxigraph.default(wasmPath);
+    try{
+        await scripts.oxigraph.default(wasmPath);
+    }catch(err){
+        throw "Instantiation of Oxigraph failed: " + err.toString();
+    }
     result.message = "Initialized Oxigraph";
     return result;
 }
@@ -48,7 +61,11 @@ async function load(payload, result){
     const t1 = new Date();
     const s1 = store.size;
 
-    await store.load(payload.triples, payload.mimetype, payload.baseURI, payload.graphURI);
+    try{
+        await store.load(payload.triples, payload.mimetype, payload.baseURI, payload.graphURI);
+    }catch(err){
+        throw "Loading failed: " + err.toString();
+    }
 
     const t2 = new Date();
     const s2 = store.size;
@@ -71,7 +88,7 @@ async function query(payload, result){
         return result;
     };
 
-    const queryDetails = getQueryDetails(payload.query);
+    const queryDetails = scripts.getQueryDetails(payload.query);
     const type = queryDetails.type;
 
     const t1 = new Date();
@@ -79,12 +96,20 @@ async function query(payload, result){
     let results;
     if(type == "update"){
         const s1 = store.size;
-        store.update(payload.query);
+        try{
+            store.update(payload.query);
+        }catch(err){
+            throw "Update query failed: " + err.toString();
+        }
         const s2 = store.size;
         results = s2-s1;
     }
     else if(type == "query"){
-        results = store.query(payload.query);
+        try{
+            results = store.query(payload.query);
+        }catch(err){
+            throw "Query failed: " + err.toString();
+        }
     }else{
         result.message = "Unknown query type.";
         return result;
@@ -103,7 +128,7 @@ async function query(payload, result){
     }
     else if(type == "query"){
         const t3 = new Date();
-        const [res, resultCount] = processQueryResponse(results, queryDetails, payload.responseMimetype);
+        const [res, resultCount] = scripts.processQueryResponse(results, queryDetails, payload.responseMimetype);
         result.data = res;
         const t4 = new Date();
 
@@ -113,135 +138,4 @@ async function query(payload, result){
 
     return result;
     
-}
-
-function getQueryDetails(query){
-    const parser = new scripts.sparqljs.Parser();
-    try{
-        return parser.parse(query);
-    }catch(err){
-        if(err.toString().indexOf("SPARQL*") != -1){
-            return {
-                type: "query",
-                queryType: "CONSTRUCT",
-                sparqlStar: true
-            }
-        }else{
-            throw err;
-        }
-    }
-}
-
-function processQueryResponse(results, queryDetails, mimetype){
-    switch(queryDetails.queryType){
-        case "SELECT":
-            const variables = getSelectQueryVariables(queryDetails);
-            return buildSelectQueryResponse(results, variables);
-        case "ASK":
-            return buildAskQueryResponse(results);
-        case "CONSTRUCT":
-            return buildConstructQueryResponse(results, mimetype, queryDetails.sparqlStar);
-    }
-}
-
-function buildAskQueryResponse(result){
-    return [result, 1];
-}
-
-function buildConstructQueryResponse(quads, mimetype, sparqlStar){
-    let qRes = quads;
-    if(mimetype == undefined || mimetype == "text/turtle"){
-        const tempStore = new scripts.oxigraph.Store(quads);
-        qRes = tempStore.dump("text/turtle", undefined);
-    }else if(mimetype == "application/ld+json"){
-        if(sparqlStar) throw"SPARQL* not supported for JSON-LD";
-        let arr = [];
-        for(let quad of quads){
-            arr.push(quadToJSONLDObject(quad));
-        }
-        qRes = arr;
-    }
-    return [qRes, quads.length];
-}
-
-function buildSelectQueryResponse(bindings, variables){
-    let doc = {
-        head: {vars: variables},
-        results: {bindings: []}
-    }
-    let termTypeMap = {
-        NamedNode: "uri",
-        Literal: "literal"
-    }
-    let resultCount = 0;
-    for (const binding of bindings) {
-        resultCount++;
-        let obj = {};
-        variables.forEach(variable => {
-            obj[variable] = {};
-            const node = binding.get(variable);
-            obj[variable].value = node.value;
-            obj[variable].type = termTypeMap[node.termType];
-            if(obj[variable].type == "literal"){
-                if(node.language != ""){
-                    obj[variable]["xml:lang"] = node.language;
-                }else{
-                    obj[variable].datatype = node.datatype.value;
-                }
-            }
-        });
-        doc.results.bindings.push(obj);
-    }
-    return [doc, resultCount];
-}
-
-function getSelectQueryVariables(queryDetails){
-
-    // If no wildcard
-    if(queryDetails.variables[0].value != "*"){
-        return queryDetails.variables.map(v => v.value);
-    }
-
-    // If wildcard
-    let variables = new Set();
-    queryDetails.where.forEach(item => {
-        if(Object.keys(item).includes("triples")){
-            item.triples.forEach(triple => {
-                Object.keys(triple).forEach(key => {
-                    if(triple[key].termType == "Variable") variables.add(triple[key].value);
-                })
-            })
-        }
-    })
-    return Array.from(variables);
-}
-
-function quadToJSONLDObject(quad){
-    let obj = {"@id": quad.subject.value};
-    if(quad.predicate.value == "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"){
-        obj["@type"] = quad.object.value;
-    }else{
-        if(quad.object.termType == "NamedNode"){
-            obj[quad.predicate.value] = {"@id": quad.object.value};
-        }else if(quad.object.termType == "Literal"){
-            if(quad.object.datatype.value == "http://www.w3.org/2001/XMLSchema#string"){
-                obj[quad.predicate.value] = quad.object.value;
-            }
-            if(quad.object.datatype.value == "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"){
-                obj[quad.predicate.value] = {
-                    "@value": quad.object.value,
-                    "@language": quad.object.language
-                };
-            }else{
-                obj[quad.predicate.value] = {
-                    "@value": quad.object.value,
-                    "@type": quad.object.datatype.value
-                }
-            }
-        }else{
-            console.log("Unsupported object");
-            console.log(quad);
-        }
-    }
-    return obj;
 }

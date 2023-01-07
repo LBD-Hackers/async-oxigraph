@@ -34,14 +34,16 @@ export enum TaskType{
     QUERY="QUERY"
 }
 
+// Only for CONSTRUCT queries
+// SELECT queries are always returned as [SPARQL 1.1 Query Results JSON Format](https://www.w3.org/TR/sparql11-results-json/)
 export enum ResponseMimetype{
     JSONLD="application/ld+json",
-    TURTLE="text/turtle",
-    JSON="application/sparql-results+json"
+    TURTLE="text/turtle"
 }
 
 export enum RDFMimetype{
-    JSONLD="application/ld+json",
     TURTLE="text/turtle",
-    NTRIPLES="application/n-triples"
+    NTRIPLES="application/n-triples",
+    NQUADS="application/n-quads",
+    RDFXML="application/rdf+xml"
 }
