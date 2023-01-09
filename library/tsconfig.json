@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "declarationMap": false,
+        "moduleResolution": "node",
+        "skipLibCheck": true,
+        "baseUrl": "src",
+        "outDir": "dist",
+        "lib": ["DOM"]
+    },
+    "exclude": [
+        "node_modules",
+        "./scripts-bundle"
+    ]
+  }

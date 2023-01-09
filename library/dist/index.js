@@ -1,7 +1,6 @@
 // src/index.ts
 var AsyncOxigraph = class {
   constructor(workerPath) {
-    this.workerPath = workerPath;
     this.worker = new Worker(workerPath);
   }
   async init(wasmPath) {

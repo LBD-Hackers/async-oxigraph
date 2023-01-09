@@ -1408,16 +1408,6 @@ async function init(input) {
 
 var web = /*#__PURE__*/Object.freeze({
     __proto__: null,
-    namedNode: namedNode,
-    blankNode: blankNode,
-    literal: literal,
-    defaultGraph: defaultGraph,
-    variable: variable,
-    triple: triple,
-    quad: quad,
-    fromTerm: fromTerm,
-    fromQuad: fromQuad,
-    main: main,
     BlankNode: BlankNode$2,
     DefaultGraph: DefaultGraph$2,
     Literal: Literal$2,
@@ -1425,8 +1415,18 @@ var web = /*#__PURE__*/Object.freeze({
     Quad: Quad$2,
     Store: Store,
     Variable: Variable$2,
+    blankNode: blankNode,
+    default: init,
+    defaultGraph: defaultGraph,
+    fromQuad: fromQuad,
+    fromTerm: fromTerm,
     initSync: initSync,
-    default: init
+    literal: literal,
+    main: main,
+    namedNode: namedNode,
+    quad: quad,
+    triple: triple,
+    variable: variable
 });
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
