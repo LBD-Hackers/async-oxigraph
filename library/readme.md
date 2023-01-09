@@ -16,11 +16,10 @@ Better documentation will come! For now, check the demo source code in `demo/ind
 
 ## Use
 
-* `npm i --save oxigraph async-oxigraph`
-* Copy `node_modules/oxigraph/web_bg.wasm` to your assets folder
-* Copy `node_modules/async-oxigraph/worker.js` and `node_modules/async-oxigraph/scripts.bundle.js` to your assets folder
+**NB!** not on npm yet
+`npm i --save async-oxigraph`
 
-**NB!** it is important that the version of your Oxigraph matches the one used in async-oxigraph (take a look at the dependencies in package.json)
+Copy `worker.js`, `scripts.bundle.js` and `web_bg.wasm` to your assets folder.
 
 ```javascript
 import { AsyncOxigraph } from 'async-oxigraph';
@@ -41,12 +40,6 @@ import { AsyncOxigraph } from 'async-oxigraph';
 ```
 
 But really, take a look at the demo :)
-
-## Contribute
-
-### Build
-From library dir: 
-* `npm run build`
 
 ### Backlog
 

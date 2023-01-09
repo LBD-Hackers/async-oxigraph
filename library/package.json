@@ -1,6 +1,6 @@
 {
     "name": "async-oxigraph",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "author": "Mads Holten Rasmussen<mhra@niras.dk>",
     "description": "",
     "main": "dist/index.js",

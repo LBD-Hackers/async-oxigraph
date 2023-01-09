@@ -8,6 +8,8 @@ import { TaskType, WorkerInstruction, WorkerResult, ResponseMimetype } from "./i
  * Developed by Mads Holten Rasmussen
  */
 
+export * from './interfaces';
+
 export class AsyncOxigraph{
 
     private worker: Worker;

@@ -1,3 +1,23 @@
+// src/interfaces.ts
+var TaskType = /* @__PURE__ */ ((TaskType2) => {
+  TaskType2["INIT"] = "INIT";
+  TaskType2["LOAD"] = "LOAD";
+  TaskType2["QUERY"] = "QUERY";
+  return TaskType2;
+})(TaskType || {});
+var ResponseMimetype = /* @__PURE__ */ ((ResponseMimetype3) => {
+  ResponseMimetype3["JSONLD"] = "application/ld+json";
+  ResponseMimetype3["TURTLE"] = "text/turtle";
+  return ResponseMimetype3;
+})(ResponseMimetype || {});
+var RDFMimetype = /* @__PURE__ */ ((RDFMimetype2) => {
+  RDFMimetype2["TURTLE"] = "text/turtle";
+  RDFMimetype2["NTRIPLES"] = "application/n-triples";
+  RDFMimetype2["NQUADS"] = "application/n-quads";
+  RDFMimetype2["RDFXML"] = "application/rdf+xml";
+  return RDFMimetype2;
+})(RDFMimetype || {});
+
 // src/index.ts
 var AsyncOxigraph = class {
   constructor(workerPath) {
@@ -27,5 +47,8 @@ var AsyncOxigraph = class {
   }
 };
 export {
-  AsyncOxigraph
+  AsyncOxigraph,
+  RDFMimetype,
+  ResponseMimetype,
+  TaskType
 };

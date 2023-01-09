@@ -6,6 +6,7 @@ import { WorkerResult, ResponseMimetype } from "./interfaces";
  *
  * Developed by Mads Holten Rasmussen
  */
+export * from './interfaces';
 export declare class AsyncOxigraph {
     private worker;
     constructor(workerPath: string);

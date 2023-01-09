@@ -7,7 +7,7 @@
         "skipLibCheck": true,
         "baseUrl": "src",
         "outDir": "dist",
-        "lib": ["DOM"]
+        "lib": ["es2015", "dom"]
     },
     "exclude": [
         "node_modules",
