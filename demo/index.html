@@ -80,6 +80,8 @@
                     <option value="application/rdf+xml">RDF/XML</option>
                 </select>
 
+                <button id="dumpStore" class="button-6" role="button">Dump</button>
+
                 <div class="resultContainer" style="visibility: hidden;"></div>
 
             </div>
@@ -126,6 +128,7 @@
                 queryWorker()
             }
         });
+        document.querySelector('#dumpStore').addEventListener('click', dumpStore);
         document.querySelector('#close').addEventListener('click', closeWorker);
 
         const queryPanel = CodeMirror(editorContainer, {
@@ -321,6 +324,30 @@ WHERE {
             setQueryPanelVisibility();
         }
 
+        async function dumpStore(){
+
+            const extMap = {
+                "application/ld+json": "json",
+                "application/n-triples": "nt",
+                "application/n-quads": "nq",
+                "application/rdf+xml": "xml",
+                "text/turtle": "ttl"
+            }
+            const dumpMimetype = resultMimetypeElement.value;
+            const ext = extMap[dumpMimetype];
+
+            let triples = "";
+            if(store != undefined){
+                triples = store.dump(dumpMimetype);
+            }else{
+                const res = await asyncOxigraph.dump(dumpMimetype);
+                console.log(res);
+                triples = res.data;
+            }
+            
+            download(`triples.${ext}`, triples);
+        }
+
         function showQueryResult(result, queryType, resultMimetype){
             resultContainer.style.visibility = "visible";
             if(queryType == "CONSTRUCT" && resultMimetype != "application/ld+json"){
@@ -365,6 +392,19 @@ WHERE {
                 }, false);
                 reader.readAsText(file, "utf-8");
             });
+        }
+
+        function download(filename, text) {
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            element.click();
+
+            document.body.removeChild(element);
         }
 
     </script>

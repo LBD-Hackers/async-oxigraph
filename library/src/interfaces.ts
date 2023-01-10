@@ -1,5 +1,6 @@
 export interface WorkerInstruction{
     task: TaskType;
+    dumpPayload?: DumpPayload;
     initPayload?: InitPayload;
     loadPayload?: LoadPayload;
     queryPayload?: QueryPayload;
@@ -23,12 +24,18 @@ export interface QueryPayload{
 
 export interface LoadPayload{
     triples: string;
-    mimetype: string;
+    mimetype: RDFMimetype;
     baseURI?: string;
     graphURI?: string;
 }
 
+export interface DumpPayload{
+    mimetype: RDFMimetype;
+    graphURI?: string;
+}
+
 export enum TaskType{
+    DUMP="DUMP",
     INIT="INIT",
     LOAD="LOAD",
     QUERY="QUERY"

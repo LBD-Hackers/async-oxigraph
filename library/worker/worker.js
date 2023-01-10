@@ -21,6 +21,9 @@ self.addEventListener('message', async (ev) => {
     };
     try{
         switch(task){
+            case "DUMP":
+                result = await dump(ev.data.dumpPayload, result);
+                break;
             case "INIT":
                 result = await init(ev.data.initPayload, result);
                 break;
@@ -77,6 +80,19 @@ async function load(payload, result){
     result.message = `Loaded ${count} triples in ${timeInSeconds} seconds`;
     return result;
     
+}
+
+// Dump store
+async function dump(payload, result){
+
+    const t1 = new Date();
+    result.data = store.dump(payload.mimetype, payload.graphURI);
+    const t2 = new Date();
+
+    const timeInSeconds = Math.abs(t2 - t1) / 1000;
+    result.message = `Created RDF dump in ${timeInSeconds} seconds`;
+    return result;
+
 }
 
 // Query

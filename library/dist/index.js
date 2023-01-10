@@ -1,5 +1,6 @@
 // src/interfaces.ts
 var TaskType = /* @__PURE__ */ ((TaskType2) => {
+  TaskType2["DUMP"] = "DUMP";
   TaskType2["INIT"] = "INIT";
   TaskType2["LOAD"] = "LOAD";
   TaskType2["QUERY"] = "QUERY";
@@ -20,10 +21,10 @@ var RDFMimetype = /* @__PURE__ */ ((RDFMimetype2) => {
 
 // src/index.ts
 var AsyncOxigraph = class {
-  constructor(workerPath) {
+  constructor(workerPath = "./assets/oxigraph/worker.js") {
     this.worker = new Worker(workerPath);
   }
-  async init(wasmPath) {
+  async init(wasmPath = "./web_bg.wasm") {
     return await this.runBackgroundTask({ task: "INIT" /* INIT */, initPayload: { wasmPath } });
   }
   async load(triples, mimetype, baseURI, graphURI) {
@@ -31,6 +32,9 @@ var AsyncOxigraph = class {
   }
   async query(query, responseMimetype) {
     return await this.runBackgroundTask({ task: "QUERY" /* QUERY */, queryPayload: { query, responseMimetype } });
+  }
+  async dump(mimetype = "application/n-quads" /* NQUADS */, graphURI) {
+    return await this.runBackgroundTask({ task: "DUMP" /* DUMP */, dumpPayload: { mimetype, graphURI } });
   }
   close() {
     this.worker.terminate();
