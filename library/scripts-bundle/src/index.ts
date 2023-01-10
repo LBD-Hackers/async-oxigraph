@@ -115,7 +115,6 @@ function buildSelectQueryResponse(results, variables){
 }
 
 function quadToJSONLDObject(quad){
-    console.log(quad);
     let obj = {"@id": quad.subject.value};
     if(quad.predicate.value == "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"){
         obj["@type"] = quad.object.value;
