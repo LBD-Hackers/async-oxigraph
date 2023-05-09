@@ -46,6 +46,9 @@
             <option value="application/rdf+xml">RDF/XML</option>
         </select>
 
+        <label for="graphURI">Graph URI (leave blank for default graph)</label>
+        <input type="text" id="graphURI"/>
+
         <input type="button" class="button-6" role="button" id="get_file" value="Load Triples"
             onclick="document.getElementById('fileInput').click()">
         <input type="file" accept=".ttl,.nt,.nq,.json,.xml" id="fileInput" style="display: none;">
@@ -111,6 +114,7 @@
         let asyncOxigraph;
 
         let mimetypeElement = document.getElementById('mimetype');
+        let graphURIElement = document.getElementById('graphURI');
         let resultMimetypeElement = document.getElementById('resultMimetype');
         let messageElement = document.getElementById('message');
         let errorElement = document.getElementById('error');
@@ -187,7 +191,8 @@ WHERE {
             await init("./assets/web_bg.wasm");
 
             store = new Store();
-            store.load(triples, mimetype, undefined, undefined);
+            const graphURI = graphURIElement.value ? namedNode(graphURIElement.value) : undefined;
+            store.load(triples, mimetype, undefined, graphURI);
 
             const t2 = new Date();
             const dt = Math.abs(t2 - t1) / 1000;
@@ -230,7 +235,8 @@ WHERE {
             await asyncOxigraph.init();
 
             // Load data
-            const response = await asyncOxigraph.load(triples, mimetype, undefined, undefined);
+            const graphURI = graphURIElement.value ? graphURIElement.value : undefined;
+            const response = await asyncOxigraph.load(triples, mimetype, undefined, graphURI);
 
             const t2 = new Date();
             const dt = Math.abs(t2 - t1) / 1000;

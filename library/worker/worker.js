@@ -64,6 +64,8 @@ async function load(payload, result){
     const t1 = new Date();
     const s1 = store.size;
 
+    if(payload.graphURI != undefined) payload.graphURI = scripts.oxigraph.namedNode(payload.graphURI);
+
     try{
         await store.load(payload.triples, payload.mimetype, payload.baseURI, payload.graphURI);
     }catch(err){
