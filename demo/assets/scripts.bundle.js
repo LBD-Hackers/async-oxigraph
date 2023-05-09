@@ -1411,16 +1411,6 @@ var scripts = (function (exports) {
 
     var web = /*#__PURE__*/Object.freeze({
         __proto__: null,
-        namedNode: namedNode,
-        blankNode: blankNode,
-        literal: literal,
-        defaultGraph: defaultGraph,
-        variable: variable,
-        triple: triple,
-        quad: quad,
-        fromTerm: fromTerm,
-        fromQuad: fromQuad,
-        main: main,
         BlankNode: BlankNode$2,
         DefaultGraph: DefaultGraph$2,
         Literal: Literal$2,
@@ -1428,8 +1418,18 @@ var scripts = (function (exports) {
         Quad: Quad$2,
         Store: Store,
         Variable: Variable$2,
+        blankNode: blankNode,
+        default: init,
+        defaultGraph: defaultGraph,
+        fromQuad: fromQuad,
+        fromTerm: fromTerm,
         initSync: initSync,
-        default: init
+        literal: literal,
+        main: main,
+        namedNode: namedNode,
+        quad: quad,
+        triple: triple,
+        variable: variable
     });
 
     var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -4047,7 +4047,6 @@ var scripts = (function (exports) {
         return [doc, resultCount];
     }
     function quadToJSONLDObject(quad) {
-        console.log(quad);
         var obj = { "@id": quad.subject.value };
         if (quad.predicate.value == "http://www.w3.org/1999/02/22-rdf-syntax-ns#type") {
             obj["@type"] = quad.object.value;
