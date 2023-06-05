@@ -1,5 +1,6 @@
 export function getSelectQueryVariables(queryDetails){
 
+
     // If no wildcard
     if(queryDetails.variables[0].value != "*"){
         return queryDetails.variables.map(v => v.value);

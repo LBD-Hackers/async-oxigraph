@@ -146,7 +146,7 @@ async function query(payload, result){
     }
     else if(type == "query"){
         const t3 = new Date();
-        const [res, resultCount] = scripts.processQueryResponse(results, queryDetails, payload.responseMimetype);
+        const [res, resultCount] = scripts.processQueryResponse(results, payload.query, queryDetails, payload.responseMimetype);
         result.data = res;
         const t4 = new Date();
 

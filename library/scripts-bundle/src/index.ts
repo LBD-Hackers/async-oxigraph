@@ -2,7 +2,6 @@
 export * as oxigraph from 'oxigraph/web.js';
 import { Parser } from 'sparqljs';
 import { Store } from 'oxigraph/web.js';
-import { getSelectQueryVariables } from './sparql-processing';
 
 // Other scripts that will be part of the bundle
 
@@ -32,20 +31,33 @@ export function getQueryDetails(query: string){
  * Processes a query response as returned by Oxigraph so it's easier to work with in a JavaScript
  * based application
  * @param {*} results the raw Oxigraph results
+ * @param {*} rawQuery The raw SPARQL query
  * @param {*} queryDetails Query details in JSON format as returned by the getQueryDetails method
  * @param {*} mimetype used for CONSTRUCT queries to describe the desired serialization of the results
  * @returns 
  */
-export function processQueryResponse(results: any, queryDetails: any, mimetype: string){
+export function processQueryResponse(results: any, rawQuery: string, queryDetails: any, mimetype: string){
     switch(queryDetails.queryType){
         case "SELECT":
-            const variables = getSelectQueryVariables(queryDetails);
+            const variables = getSelectQueryVariables(rawQuery);
             return buildSelectQueryResponse(results, variables);
         case "ASK":
             return buildAskQueryResponse(results);
         case "CONSTRUCT":
             return buildConstructQueryResponse(results, mimetype, queryDetails.sparqlStar);
     }
+}
+
+function getSelectQueryVariables(query: string): string[]{
+    const variables: string[] = [];
+    const matches = query.match(/\?\w+\b/g);
+    if(matches && Array.isArray(matches)){
+        matches.forEach(m => {
+            const varName = m.substring(1);
+            if(!variables.includes(varName)) variables.push(varName);
+        })
+    }
+    return variables;
 }
 
 function buildAskQueryResponse(result: boolean){

@@ -5,7 +5,7 @@ This is an Oxigraph bundle that will run in a web worker.
 ## Build new release
 
 1. Run `npm run build`
-1. In `OXI.worker.js` add `init: init` to the `var web = /*#__PURE__*/Object.freeze(` list:
+1. In `scripts.bundle.js` add `init: init` to the `var web = /*#__PURE__*/Object.freeze(` list:
 
     Example
     ```js
@@ -40,7 +40,7 @@ This is an Oxigraph bundle that will run in a web worker.
 
 worker.js
 ```js
-importScripts('./OXI.worker.js');
+importScripts('./scripts.bundle.js');
 self.addEventListener('message', async (ev) => {
 
     // Input
