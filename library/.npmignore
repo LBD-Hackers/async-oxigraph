@@ -1,5 +1,7 @@
 src
 worker
+package
 scripts-bundle
 readme.md
 tsconfig.json
+node_modules
