@@ -61,7 +61,7 @@ async function load(payload, result){
     // Create store if none exists
     if(store == undefined) store = new scripts.oxigraph.Store();
 
-    const t1 = new Date();
+    const t1 = new Date().getTime();;
     const s1 = store.size;
 
     if(payload.graphURI != undefined) payload.graphURI = scripts.oxigraph.namedNode(payload.graphURI);
@@ -72,11 +72,11 @@ async function load(payload, result){
         throw "Loading failed: " + err.toString();
     }
 
-    const t2 = new Date();
+    const t2 = new Date().getTime();;
     const s2 = store.size;
 
     const count = s2-s1;
-    const timeInSeconds = Math.abs(t2 - t1) / 1000;
+    const timeInSeconds = (t2 - t1) / 1000;
 
     result.data = store.size;
     result.message = `Loaded ${count} triples in ${timeInSeconds} seconds`;
@@ -87,11 +87,11 @@ async function load(payload, result){
 // Dump store
 async function dump(payload, result){
 
-    const t1 = new Date();
+    const t1 = new Date().getTime();;
     result.data = store.dump(payload.mimetype, payload.graphURI);
-    const t2 = new Date();
+    const t2 = new Date().getTime();;
 
-    const timeInSeconds = Math.abs(t2 - t1) / 1000;
+    const timeInSeconds = (t2 - t1) / 1000;
     result.message = `Created RDF dump in ${timeInSeconds} seconds`;
     return result;
 
@@ -109,7 +109,7 @@ async function query(payload, result){
     const queryDetails = scripts.getQueryDetails(payload.query);
     const type = queryDetails.type;
 
-    const t1 = new Date();
+    const t1 = new Date().getTime();;
 
     let results;
     if(type == "update"){
@@ -133,24 +133,24 @@ async function query(payload, result){
         return result;
     }
     
-    const t2 = new Date();
+    const t2 = new Date().getTime();;
 
-    const timeInSeconds = Math.abs(t2 - t1) / 1000;
+    const timeInSeconds = (t2 - t1) / 1000;
 
     if(type == "update"){
         result.data = {difference: results};
         result.message = results > 0 
             ? `Added ${results} triples to the store in ${timeInSeconds} seconds.`
-            : `Removed ${Math.abs(results)} triples from the store in ${timeInSeconds} seconds.`;
+            : `Removed ${results} triples from the store in ${timeInSeconds} seconds.`;
         if(results == 0) result.message = `Nothing was added. Operation took ${timeInSeconds} seconds.`;
     }
     else if(type == "query"){
-        const t3 = new Date();
+        const t3 = new Date().getTime();
         const [res, resultCount] = scripts.processQueryResponse(results, payload.query, queryDetails, payload.responseMimetype);
         result.data = res;
-        const t4 = new Date();
+        const t4 = new Date().getTime();;
 
-        const postProcessingTimeInSeconds = Math.abs(t4 - t3) / 1000;
+        const postProcessingTimeInSeconds = (t4 - t3) / 1000;
         result.message = `Got ${resultCount} results in ${timeInSeconds} seconds. Post processing took ${postProcessingTimeInSeconds} seconds.`;
     }
 

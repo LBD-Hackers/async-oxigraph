@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/base16-dark.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/sparql/sparql.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/turtle/turtle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/javascript/javascript.js"></script>
+
+    <script src="https://unpkg.com/jsonld@1.0.0/dist/jsonld.min.js"></script>
+
+    <title>Oxigraph async</title>
+  </head>
+
+  <body>
+    <h1>Oxigraph async tests</h1>
+
+    <p>Take a look at the console</p>
+
+    <script src="./assets/scripts.bundle.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "oxigraph": "https://unpkg.com/oxigraph@0.4.0-alpha.4/web.js"
+        }
+      }
+    </script>
+
+    <script type="module">
+      import init, { Store, namedNode, literal, triple } from "oxigraph";
+      import { AsyncOxigraph } from "../library/dist/index.js";
+
+      let oxiGraph;
+
+      runTests();
+
+      async function runTests() {
+        await initOne();
+        await loadTurtle();
+        await getInstance();
+        await loadBOT();
+        await simpleSelectQuery();
+        await simpleConstructQuery();
+        await savedSelectQueryNoPostProcessing();
+        await savedSelectQueryWithPostProcessing();
+        await savedSelectQueryWithParams();
+        oxiGraph.close(); // Always close when done
+      }
+
+      async function initOne() {
+        oxiGraph = AsyncOxigraph.getInstance("./assets/worker.js");
+        try {
+          await oxiGraph.init();
+          console.info("SUCCESS: Oxigraph is ready");
+        } catch (err) {
+          console.error("FAIL: Oxigraph failed to load");
+          console.error(err);
+        }
+      }
+
+      async function loadTurtle() {
+        const triplesFile = await fetch("./assets/duplex-bot.ttl");
+        const triples = await triplesFile.text();
+        try {
+          const res = await oxiGraph.load(triples, "text/turtle");
+          console.info("SUCCESS: Triples were loaded. " + res.message);
+        } catch (err) {
+          console.error("FAIL: Triples failed to load");
+          console.error(err);
+        }
+        const size = await oxiGraph.size();
+        size === 798
+          ? console.info(
+              "SUCCESS: There are exactly 798 triples in the store as expected"
+            )
+          : console.error(
+              `FAIL: Expected to find 798 triples in the store. Found ${size}`
+            );
+      }
+
+      async function getInstance() {
+        const oxi2 = AsyncOxigraph.getInstance();
+        oxi2.constructor === oxiGraph.constructor
+          ? console.info("SUCCESS: The two oxigraph instances are equal")
+          : console.error("FAIL: The two oxigraph instances are not equal");
+
+        const oxi2Size = await oxi2.size();
+        const oxiSize = await oxiGraph.size();
+        oxiSize === oxi2Size
+          ? console.info("SUCCESS: The two oxigraph instances are same size")
+          : console.error(
+              "FAIL: The two oxigraph instances are not the same size."
+            );
+      }
+
+      async function loadBOT() {
+        const triplesFile = await fetch("https://w3id.org/bot/bot.ttl");
+        const triples = await triplesFile.text();
+        try {
+          const res = await oxiGraph.load(triples, "text/turtle");
+          console.info("SUCCESS: BOT TBox was loaded. " + res.message);
+        } catch (err) {
+          console.error("FAIL: Triples failed to load");
+          console.error(err);
+        }
+      }
+
+      async function simpleSelectQuery() {
+        const query = "SELECT * WHERE {?s a <https://w3id.org/bot#Space>}";
+        try {
+          const res = await oxiGraph.query(query);
+          console.info("SUCCESS: Query executed as expected. " + res.message);
+        } catch (err) {
+          console.error("FAIL: Query failed");
+          console.error(err);
+        }
+      }
+
+      async function simpleConstructQuery() {
+        const query =
+          "CONSTRUCT {?s a <https://w3id.org/bot#Zone>} WHERE {?s a <https://w3id.org/bot#Space>}";
+        try {
+          const res = await oxiGraph.query(query, "application/ld+json");
+          console.info("SUCCESS: Query executed as expected. " + res.message);
+        } catch (err) {
+          console.error("FAIL: Query failed");
+          console.error(err);
+        }
+      }
+
+      async function savedSelectQueryNoPostProcessing() {
+        const queryDef = {
+          id: "listSpaces",
+          query: "SELECT * WHERE {?s a <https://w3id.org/bot#Space>}",
+        };
+
+        oxiGraph.addQueryDefinitions([queryDef]);
+
+        try {
+          const res = await oxiGraph.execute("listSpaces");
+          console.info("SUCCESS: Query executed as expected. " + res.message);
+        } catch (err) {
+          console.error("FAIL: Query failed");
+          console.error(err);
+        }
+      }
+
+      async function savedSelectQueryWithPostProcessing() {
+        const queryDef = {
+          id: "listSpaces2",
+          query: "SELECT * WHERE {?s a <https://w3id.org/bot#Space>}",
+          postProcessing: (res) => {
+            return res.results.bindings.map((item) => item.s.value);
+          },
+        };
+
+        oxiGraph.addQueryDefinitions([queryDef]);
+
+        try {
+          const res = await oxiGraph.execute("listSpaces2");
+          console.info("SUCCESS: Query executed as expected. " + res.message);
+        } catch (err) {
+          console.error("FAIL: Query failed");
+          console.error(err);
+        }
+      }
+
+      async function savedSelectQueryWithParams() {
+        const queryDef = {
+          id: "getSpaceProps",
+          query: `PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+          SELECT DISTINCT ?p ?label WHERE {
+            <{{spaceURI}}> ?p ?o .
+            OPTIONAL{
+              ?p rdfs:label ?label
+              FILTER(LANG(?label) = "en")
+            }
+          }`,
+          postProcessing: (res) => {
+            return res.results.bindings.map((item) => {
+              return { iri: item.p.value, label: item.label.value };
+            });
+          },
+        };
+
+        oxiGraph.addQueryDefinitions([queryDef]);
+
+        try {
+          const res = await oxiGraph.execute("getSpaceProps", {
+            spaceURI: "https://web-bim/resources/0BTBFw6f90Nfh9rP1dl_CZ",
+          });
+          console.info("SUCCESS: Query executed as expected. " + res.message);
+        } catch (err) {
+          console.error("FAIL: Query failed");
+          console.error(err);
+        }
+      }
+    </script>
+  </body>
+</html>

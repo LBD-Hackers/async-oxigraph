@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "oxigraph": "^0.3.16"
+    "oxigraph": "0.4.0-alpha.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12"
   }
 }

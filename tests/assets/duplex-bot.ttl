@@ -1,0 +1,417 @@
+@prefix ifc: <http://ifcowl.openbimstandards.org/IFC2X3_Final#>.
+@prefix fso: <https://w3id.org/fso#>.
+@prefix bot: <https://w3id.org/bot#>.
+@prefix fog: <https://w3id.org/fog#>.
+@prefix omg: <https://w3id.org/omg#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix inst: <https://web-bim/resources/>.
+
+inst:1xS3BCk291UvhgP2a6eflN a bot:Site.
+inst:1xS3BCk291UvhgP2a6eflK a bot:Building.
+inst:1xS3BCk291UvhgP2dvNMKI a bot:Storey.
+inst:1xS3BCk291UvhgP2dvNMQJ a bot:Storey.
+inst:1xS3BCk291UvhgP2dvNsgp a bot:Storey.
+inst:1xS3BCk291UvhgP2dvNtSE a bot:Storey.
+inst:0BTBFw6f90Nfh9rP1dlXr2 a bot:Space.
+inst:0BTBFw6f90Nfh9rP1dlXr%24 a bot:Space.
+inst:0BTBFw6f90Nfh9rP1dlXru a bot:Space.
+inst:0BTBFw6f90Nfh9rP1dlXrr a bot:Space.
+inst:0BTBFw6f90Nfh9rP1dlXri a bot:Space.
+inst:0BTBFw6f90Nfh9rP1dlXre a bot:Space.
+inst:0BTBFw6f90Nfh9rP1dlXrb a bot:Space.
+inst:0BTBFw6f90Nfh9rP1dlXrc a bot:Space.
+inst:0BTBFw6f90Nfh9rP1dl_CZ a bot:Space.
+inst:0BTBFw6f90Nfh9rP1dl_3S a bot:Space.
+inst:0BTBFw6f90Nfh9rP1dl_3P a bot:Space.
+inst:0BTBFw6f90Nfh9rP1dl_3Q a bot:Space.
+inst:0BTBFw6f90Nfh9rP1dl_3G a bot:Space.
+inst:0BTBFw6f90Nfh9rP1dl_3C a bot:Space.
+inst:0BTBFw6f90Nfh9rP1dl_39 a bot:Space.
+inst:0BTBFw6f90Nfh9rP1dl_3A a bot:Space.
+inst:2gRXFgjRn2HPE%24YoDLX3FV a bot:Space.
+inst:2gRXFgjRn2HPE%24YoDLX3FC a bot:Space.
+inst:10mjSDZJj9gPS2PrQaxa3z a bot:Space.
+inst:10mjSDZJj9gPS2PrQaxa4o a bot:Space.
+inst:0pNy6pOyf7JPmXRLgxs3sW a bot:Space.
+inst:2O2Fr%24t4X7Zf8NOew3FNtn a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FNqI a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FNr2 a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FNhv a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FNld a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FNau a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FNbT a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FKRi a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FKRH a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FKST a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FKIu a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FKGS a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FK80 a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FK9N a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FKEr a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FKE5 a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FK3E a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FK04 a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FK1b a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FK4F a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FKcz a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FKau a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FLQD a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FLR9 a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FLOH a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FLPP a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FLTF a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FLIE a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FLJd a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FLMr a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FLKI a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FL8v a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FL9r a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FL96 a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FLEJ a bot:Element.
+inst:2O2Fr%24t4X7Zf8NOew3FLCm a bot:Element.
+inst:1hOSvn6df7F8_7GcBWlRqU a bot:Element.
+inst:1hOSvn6df7F8_7GcBWlRrM a bot:Element.
+inst:1xS3BCk291UvhgP2dvNrrP a bot:Element.
+inst:1hOSvn6df7F8_7GcBWlR72 a bot:Element.
+inst:1xS3BCk291UvhgP2dvNrv5 a bot:Element.
+inst:1hOSvn6df7F8_7GcBWlRBU a bot:Element.
+inst:1xS3BCk291UvhgP2dvNrY1 a bot:Element.
+inst:1hOSvn6df7F8_7GcBWlRGQ a bot:Element.
+inst:1xS3BCk291UvhgP2dvNrZJ a bot:Element.
+inst:1hOSvn6df7F8_7GcBWlRH8 a bot:Element.
+inst:1xS3BCk291UvhgP2dvNrdW a bot:Element.
+inst:1hOSvn6df7F8_7GcBWlRLx a bot:Element.
+inst:1xS3BCk291UvhgP2dvNrfE a bot:Element.
+inst:1hOSvn6df7F8_7GcBWlRRL a bot:Element.
+inst:1xS3BCk291UvhgP2dvNoJ3 a bot:Element.
+inst:1hOSvn6df7F8_7GcBWlSXO a bot:Element.
+inst:1xS3BCk291UvhgP2dvNoO%24 a bot:Element.
+inst:1hOSvn6df7F8_7GcBWlSga a bot:Element.
+inst:1xS3BCk291UvhgP2dvNo1Q a bot:Element.
+inst:1hOSvn6df7F8_7GcBWlSp1 a bot:Element.
+inst:1xS3BCk291UvhgP2dvNo3N a bot:Element.
+inst:1hOSvn6df7F8_7GcBWlSnC a bot:Element.
+inst:1xS3BCk291UvhgP2dvNoCx a bot:Element.
+inst:1hOSvn6df7F8_7GcBWlS_W a bot:Element.
+inst:1xS3BCk291UvhgP2dvNom4 a bot:Element.
+inst:1hOSvn6df7F8_7GcBWlS2V a bot:Element.
+inst:1xS3BCk291UvhgP2dvNopD a bot:Element.
+inst:1hOSvn6df7F8_7GcBWlS1M a bot:Element.
+inst:1xS3BCk291UvhgP2dvNos1 a bot:Element.
+inst:1hOSvn6df7F8_7GcBWlS4Q a bot:Element.
+inst:1xS3BCk291UvhgP2dvNowu a bot:Element.
+inst:1hOSvn6df7F8_7GcBWlS8Z a bot:Element.
+inst:1xS3BCk291UvhgP2dvNoxK a bot:Element.
+inst:1hOSvn6df7F8_7GcBWlS9F a bot:Element.
+inst:1xS3BCk291UvhgP2dvNozF a bot:Element.
+inst:1hOSvn6df7F8_7GcBWlSFK a bot:Element.
+inst:1xS3BCk291UvhgP2dvNo%24h a bot:Element.
+inst:1hOSvn6df7F8_7GcBWlSDm a bot:Element.
+inst:1oKjKg9PD3fP1iIwXLh3lK a bot:Element.
+inst:1gtrSK5QnDuxDwygd0EDGO a bot:Element.
+inst:34qUFGjJzFKwVWpXe2dTPt a bot:Element.
+inst:0wkEuT1wr1kOyafLY4v_O1 a bot:Element.
+inst:0wkEuT1wr1kOyafLY4v_PL a bot:Element.
+inst:0wkEuT1wr1kOyafLY4v_PH a bot:Element.
+inst:0wkEuT1wr1kOyafLY4vyu%24 a bot:Element.
+inst:1JMZUwOon6WAV1rBBORAVn a bot:Element.
+inst:0wkEuT1wr1kOyafLY4vy_8 a bot:Element.
+inst:0st2Ty2kP2i9GWVYN22HBn a bot:Element.
+inst:0wkEuT1wr1kOyafLY4vy3H a bot:Element.
+inst:1ur9wqEhD1fgF0XSBVdztK a bot:Element.
+inst:0wkEuT1wr1kOyafLY4vy3G a bot:Element.
+inst:2fQjX2SrTFrxFKC2cOmyZz a bot:Element.
+inst:0wkEuT1wr1kOyafLY4vy4m a bot:Element.
+inst:3yrt06HiHCHQOnRKTWhuME a bot:Element.
+inst:0wkEuT1wr1kOyafLY4vy4F a bot:Element.
+inst:1dqkh_grrAr8eEicMrPggp a bot:Element.
+inst:0wkEuT1wr1kOyafLY4vy6l a bot:Element.
+inst:24EFH82h1DgeJVWlc35MMP a bot:Element.
+inst:0wkEuT1wr1kOyafLY4vy6k a bot:Element.
+inst:2YwZmYlr9AiPDZRZmucxc5 a bot:Element.
+inst:0wkEuT1wr1kOyafLY4vyMO a bot:Element.
+inst:0wkEuT1wr1kOyafLY4vyOn a bot:Element.
+inst:1xS3BCk291UvhgP2dvNmlJ a bot:Element.
+inst:2OBrcmyk58NupXoVOHUuXp a bot:Element.
+inst:1xS3BCk291UvhgP2dvNnH%24 a bot:Element.
+inst:2OBrcmyk58NupXoVOHUvVV a bot:Element.
+inst:1xS3BCk291UvhgP2dvNnLa a bot:Element.
+inst:2OBrcmyk58NupXoVOHUvR4 a bot:Element.
+inst:1xS3BCk291UvhgP2dvNnNr a bot:Element.
+inst:2OBrcmyk58NupXoVOHUvPL a bot:Element.
+inst:2OBrcmyk58NupXoVOHUvGQ a bot:Element.
+inst:2OBrcmyk58NupXoVOHUvH8 a bot:Element.
+inst:2OBrcmyk58NupXoVOHUv88 a bot:Element.
+inst:1_czKmicP9SRkaew1L5q7Z a bot:Element.
+inst:2OBrcmyk58NupXoVOHUv3h a bot:Element.
+inst:2OBrcmyk58NupXoVOHUvup a bot:Element.
+inst:2OBrcmyk58NupXoVOHUvuo a bot:Element.
+inst:2OBrcmyk58NupXoVOHUvs2 a bot:Element.
+inst:2OBrcmyk58NupXoVOHUvsm a bot:Element.
+inst:2OBrcmyk58NupXoVOHUvtA a bot:Element.
+inst:2OBrcmyk58NupXoVOHUvqp a bot:Element.
+inst:2OBrcmyk58NupXoVOHUvqo a bot:Element.
+inst:2OBrcmyk58NupXoVOHUvqz a bot:Element.
+inst:2OBrcmyk58NupXoVOHUvqy a bot:Element.
+inst:2OBrcmyk58NupXoVOHUvq%24 a bot:Element.
+inst:3obae0iBn5i9Cv4Ub3eEXf a bot:Element.
+inst:2OBrcmyk58NupXoVOHUvq_ a bot:Element.
+inst:2OBrcmyk58NupXoVOHUvqu a bot:Element.
+inst:2OBrcmyk58NupXoVOHUvqx a bot:Element.
+inst:2OBrcmyk58NupXoVOHUvqw a bot:Element.
+inst:2OBrcmyk58NupXoVOHUvr5 a bot:Element.
+inst:2OBrcmyk58NupXoVOHUvr4 a bot:Element.
+inst:2OBrcmyk58NupXoVOHUshs a bot:Element.
+inst:2OBrcmyk58NupXoVOHUsc7 a bot:Element.
+inst:2OBrcmyk58NupXoVOHUsab a bot:Element.
+inst:2OBrcmyk58NupXoVOHUsbY a bot:Element.
+inst:2OBrcmyk58NupXoVOHUtVQ a bot:Element.
+inst:2OBrcmyk58NupXoVOHUtOy a bot:Element.
+inst:2OBrcmyk58NupXoVOHUtO%24 a bot:Element.
+inst:2OBrcmyk58NupXoVOHUtO_ a bot:Element.
+inst:2OBrcmyk58NupXoVOHUtOv a bot:Element.
+inst:2OBrcmyk58NupXoVOHUtOu a bot:Element.
+inst:2OBrcmyk58NupXoVOHUtM4 a bot:Element.
+inst:2OBrcmyk58NupXoVOHUtI8 a bot:Element.
+inst:2OBrcmyk58NupXoVOHUtHN a bot:Element.
+inst:2OBrcmyk58NupXoVOHUtEr a bot:Element.
+inst:2OBrcmyk58NupXoVOHUtC0 a bot:Element.
+inst:2OBrcmyk58NupXoVOHUtDX a bot:Element.
+inst:2OBrcmyk58NupXoVOHUtBP a bot:Element.
+inst:2OBrcmyk58NupXoVOHUt8F a bot:Element.
+inst:2OBrcmyk58NupXoVOHUt8s a bot:Element.
+inst:2OBrcmyk58NupXoVOHUt5W a bot:Element.
+inst:2OBrcmyk58NupXoVOHUt2f a bot:Element.
+inst:2OBrcmyk58NupXoVOHUt0F a bot:Element.
+inst:2OBrcmyk58NupXoVOHUtxr a bot:Element.
+inst:2OBrcmyk58NupXoVOHUtoa a bot:Element.
+inst:2OBrcmyk58NupXoVOHUtjR a bot:Element.
+inst:2OBrcmyk58NupXoVOHUtju a bot:Element.
+inst:2OBrcmyk58NupXoVOHUtgP a bot:Element.
+inst:2OBrcmyk58NupXoVOHUten a bot:Element.
+inst:1xS3BCk291UvhgP2dvN%24je a bot:Element.
+inst:1s1jVhK8z0pgKYcr9jt781 a bot:Element.
+inst:1xS3BCk291UvhgP2dvN%24lY a bot:Element.
+inst:1s1jVhK8z0pgKYcr9jt7AB a bot:Element.
+inst:1xS3BCk291UvhgP2dvNwHx a bot:Element.
+inst:1l0GAJtRTFv8%24zmKJOH4%24e a bot:Element.
+inst:1xS3BCk291UvhgP2dvNwMI a bot:Element.
+inst:1l0GAJtRTFv8%24zmKJOH4u1 a bot:Element.
+inst:1xS3BCk291UvhgP2dvNwQb a bot:Element.
+inst:1l0GAJtRTFv8%24zmKJOH4qs a bot:Element.
+inst:1xS3BCk291UvhgP2dvNwSd a bot:Element.
+inst:1l0GAJtRTFv8%24zmKJOH4oq a bot:Element.
+inst:1xS3BCk291UvhgP2dvNwTD a bot:Element.
+inst:1l0GAJtRTFv8%24zmKJOH4pU a bot:Element.
+inst:1xS3BCk291UvhgP2dvNw00 a bot:Element.
+inst:1l0GAJtRTFv8%24zmKJOH4kJ a bot:Element.
+inst:1xS3BCk291UvhgP2dvNw49 a bot:Element.
+inst:1l0GAJtRTFv8%24zmKJOH4gQ a bot:Element.
+inst:1xS3BCk291UvhgP2dvNw5g a bot:Element.
+inst:1l0GAJtRTFv8%24zmKJOH4hv a bot:Element.
+inst:1xS3BCk291UvhgP2dvNwAF a bot:Element.
+inst:1l0GAJtRTFv8%24zmKJOH4aS a bot:Element.
+inst:1xS3BCk291UvhgP2dvNwDm a bot:Element.
+inst:1l0GAJtRTFv8%24zmKJOH4ZZ a bot:Element.
+inst:0jf0rYHfX3RAB3bSIRjmxl a bot:Element.
+inst:3ThA22djr8AQQ9eQMA5s7I a bot:Element.
+inst:1xS3BCk291UvhgP2dvNxVS a bot:Element.
+inst:1xS3BCk291UvhgP2dvNx5J a bot:Element.
+inst:3v9a8BKHj2mvcndWrD6JMo a bot:Element.
+inst:0c3kWfbRLERxKStRVifSpJ a bot:Element.
+inst:0jf0rYHfX3RAB3bSIRjmmy a bot:Element.
+inst:0jf0rYHfX3RAB3bSIRjmpw a bot:Element.
+inst:0jf0rYHfX3RAB3bSIRjmoa a bot:Element.
+inst:0jf0rYHfX3RAB3bSIRjmr1 a bot:Element.
+inst:1Eo2%24BaHX42AEkDvQQDocD a bot:Element.
+inst:1Eo2%24BaHX42AEkDvQQDoy2 a bot:Element.
+inst:0kF45Qs8L9PAM9kmb1lT5d a bot:Element.
+inst:0kF45Qs8L9PAM9kmb1lT5l a bot:Element.
+inst:0kF45Qs8L9PAM9kmb1lT5t a bot:Element.
+inst:0kF45Qs8L9PAM9kmb1lT5%24 a bot:Element.
+inst:0kF45Qs8L9PAM9kmb1lT2B a bot:Element.
+inst:0kF45Qs8L9PAM9kmb1lT2N a bot:Element.
+inst:0kF45Qs8L9PAM9kmb1lT2Z a bot:Element.
+inst:3bXiCStxP6Fgxdej%24yc5T8 a bot:Element.
+inst:3bXiCStxP6Fgxdej%24yc503 a bot:Element.
+inst:3bXiCStxP6Fgxdej%24yc50B a bot:Element.
+inst:3bXiCStxP6Fgxdej%24yc50U a bot:Element.
+inst:3bXiCStxP6Fgxdej%24yc50n a bot:Element.
+inst:3bXiCStxP6Fgxdej%24yc52o a bot:Element.
+inst:3bXiCStxP6Fgxdej%24yc554 a bot:Element.
+inst:3bXiCStxP6Fgxdej%24yc55E a bot:Element.
+inst:3bXiCStxP6Fgxdej%24yc55M a bot:Element.
+inst:3bXiCStxP6Fgxdej%24yc55U a bot:Element.
+inst:3bXiCStxP6Fgxdej%24yc55c a bot:Element.
+inst:3bXiCStxP6Fgxdej%24yc55k a bot:Element.
+inst:3bXiCStxP6Fgxdej%24yc55m a bot:Element.
+inst:0iEHWY1%24XA8eQeeULq4jZ1 a bot:Element.
+inst:0iEHWY1%24XA8eQeeULq4j_U a bot:Element.
+inst:0iEHWY1%24XA8eQeeULq4jpl a bot:Element.
+inst:0iEHWY1%24XA8eQeeULq4jDb a bot:Element.
+inst:0iEHWY1%24XA8eQeeULq4jE6 a bot:Element.
+inst:0iEHWY1%24XA8eQeeULq4j7w a bot:Element.
+inst:0iEHWY1%24XA8eQeeULq4jOM a bot:Element.
+inst:0iEHWY1%24XA8eQeeULq4jQJ a bot:Element.
+inst:0iEHWY1%24XA8eQeeULq4jTB a bot:Element.
+inst:0iEHWY1%24XA8eQeeULq4jJA a bot:Element.
+inst:0iEHWY1%24XA8eQeeULq4jKO a bot:Element.
+inst:0iEHWY1%24XA8eQeeULq4jMl a bot:Element.
+inst:0iEHWY1%24XA8eQeeULq4ien a bot:Element.
+inst:0dxE1Sy6nDqfpDb5vIMNiA a bot:Element.
+inst:0dxE1Sy6nDqfpDb5vIMN_Z a bot:Element.
+inst:3KMJUyUe9DfQ2FOCd5ZoiN a bot:Element.
+inst:01KzA4SPn5IOODwLEb5RNY a bot:Element.
+inst:37Fy90kSD2PvviizyM7EKl a bot:Element.
+inst:21ldoMpbP4VfsJ0XGY_34d a bot:Element.
+inst:21ldoMpbP4VfsJ0XGY_34P a bot:Element.
+inst:21ldoMpbP4VfsJ0XGY_335 a bot:Element.
+inst:1aj%24VJZFn2TxepZUBcKpvt a bot:Element.
+inst:1xS3BCk291UvhgP2dvNd%24j a bot:Element.
+inst:1aj%24VJZFn2TxepZUBcKp%24i a bot:Element.
+inst:1aj%24VJZFn2TxepZUBcKpZw a bot:Element.
+inst:1xS3BCk291UvhgP2dvNdad a bot:Element.
+inst:1aj%24VJZFn2TxepZUBcKpac a bot:Element.
+inst:1aj%24VJZFn2TxepZUBcKpee a bot:Element.
+inst:1aj%24VJZFn2TxepZUBcKphf a bot:Element.
+inst:2gRXFgjRn2HPE%24YoDLX0mp a bot:Element.
+inst:2gRXFgjRn2HPE%24YoDLX0q2 a bot:Element.
+inst:2gRXFgjRn2HPE%24YoDLX0rb a bot:Element.
+inst:2gRXFgjRn2HPE%24YoDLX0ra a bot:Element.
+inst:2gRXFgjRn2HPE%24YoDLX0vP a bot:Element.
+inst:2kvhekJrnDjRw0CDkKW%24UD a bot:Element.
+inst:2kvhekJrnDjRw0CDkKW%24JW a bot:Element.
+inst:2kvhekJrnDjRw0CDkKW%24KL a bot:Element.
+inst:2kvhekJrnDjRw0CDkKW%24fQ a bot:Element.
+inst:2OrWItJ6zAwBNp0OUxK_l8 a bot:Element.
+inst:2OrWItJ6zAwBNp0OUxK%248W a bot:Element.
+inst:2OrWItJ6zAwBNp0OUxK%24Bq a bot:Element.
+inst:2OrWItJ6zAwBNp0OUxK%24CR a bot:Element.
+inst:2OrWItJ6zAwBNp0OUxK%24Dv a bot:Element.
+inst:2OrWItJ6zAwBNp0OUxK%24Du a bot:Element.
+inst:2OrWItJ6zAwBNp0OUxK%24Dx a bot:Element.
+inst:2OrWItJ6zAwBNp0OUxK%24Dw a bot:Element.
+inst:1CZILmCaHETO8tf3SgGEWh a bot:Element.
+inst:1CZILmCaHETO8tf3SgGEXu a bot:Element.
+inst:3Y4YRln2r91vflHcHE5IVS a bot:Element.
+inst:3Y4YRln2r91vflHcHE5IVT a bot:Element.
+inst:3Y4YRln2r91vflHcHE5IVI a bot:Element.
+inst:3Y4YRln2r91vflHcHE5IVJ a bot:Element.
+inst:3Y4YRln2r91vflHcHE5ITp a bot:Element.
+inst:3Y4YRln2r91vflHcHE5ITm a bot:Element.
+inst:3Y4YRln2r91vflHcHE5ITn a bot:Element.
+inst:3Y4YRln2r91vflHcHE5ITs a bot:Element.
+inst:0BTBFw6f90Nfh9rP1dlXr2 bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FKcz, inst:2OBrcmyk58NupXoVOHUtxr, inst:2O2Fr%24t4X7Zf8NOew3FNr2, inst:1s1jVhK8z0pgKYcr9jt7AB, inst:1hOSvn6df7F8_7GcBWlRBU, inst:2O2Fr%24t4X7Zf8NOew3FKGS, inst:2O2Fr%24t4X7Zf8NOew3FNhv, inst:1hOSvn6df7F8_7GcBWlRRL.
+inst:0BTBFw6f90Nfh9rP1dlXr%24 bot:adjacentElement inst:3bXiCStxP6Fgxdej%24yc50n, inst:2O2Fr%24t4X7Zf8NOew3FKcz, inst:2OBrcmyk58NupXoVOHUtoa, inst:2O2Fr%24t4X7Zf8NOew3FNhv, inst:1hOSvn6df7F8_7GcBWlRRL, inst:2O2Fr%24t4X7Zf8NOew3FKST, inst:2O2Fr%24t4X7Zf8NOew3FKIu, inst:0iEHWY1%24XA8eQeeULq4jE6.
+inst:0BTBFw6f90Nfh9rP1dlXru bot:adjacentElement inst:3bXiCStxP6Fgxdej%24yc50U, inst:2O2Fr%24t4X7Zf8NOew3FKcz, inst:2O2Fr%24t4X7Zf8NOew3FKcz, inst:2OBrcmyk58NupXoVOHUtjR, inst:2O2Fr%24t4X7Zf8NOew3FNbT, inst:0iEHWY1%24XA8eQeeULq4jDb, inst:0iEHWY1%24XA8eQeeULq4jDb, inst:2O2Fr%24t4X7Zf8NOew3FKIu, inst:2O2Fr%24t4X7Zf8NOew3FKST, inst:1hOSvn6df7F8_7GcBWlS8Z.
+inst:0BTBFw6f90Nfh9rP1dlXrr bot:adjacentElement inst:3bXiCStxP6Fgxdej%24yc50n, inst:2O2Fr%24t4X7Zf8NOew3FKcz, inst:2O2Fr%24t4X7Zf8NOew3FKcz, inst:2O2Fr%24t4X7Zf8NOew3FKcz, inst:2OBrcmyk58NupXoVOHUtxr, inst:2O2Fr%24t4X7Zf8NOew3FNqI, inst:1hOSvn6df7F8_7GcBWlRGQ, inst:2O2Fr%24t4X7Zf8NOew3FNbT, inst:2O2Fr%24t4X7Zf8NOew3FKST, inst:1hOSvn6df7F8_7GcBWlS8Z, inst:2O2Fr%24t4X7Zf8NOew3FKST, inst:2O2Fr%24t4X7Zf8NOew3FKGS, inst:2O2Fr%24t4X7Zf8NOew3FNr2.
+inst:0BTBFw6f90Nfh9rP1dlXri bot:adjacentElement inst:1hOSvn6df7F8_7GcBWlRrM, inst:1hOSvn6df7F8_7GcBWlRrM, inst:1hOSvn6df7F8_7GcBWlRrM, inst:1hOSvn6df7F8_7GcBWlRrM, inst:2OBrcmyk58NupXoVOHUt5W, inst:3bXiCStxP6Fgxdej%24yc55M, inst:2O2Fr%24t4X7Zf8NOew3FLR9, inst:2O2Fr%24t4X7Zf8NOew3FL96, inst:2OBrcmyk58NupXoVOHUvVV, inst:2O2Fr%24t4X7Zf8NOew3FL9r, inst:2O2Fr%24t4X7Zf8NOew3FL9r, inst:1aj%24VJZFn2TxepZUBcKpac, inst:2O2Fr%24t4X7Zf8NOew3FL9r, inst:2OBrcmyk58NupXoVOHUvPL, inst:1aj%24VJZFn2TxepZUBcKpac, inst:2O2Fr%24t4X7Zf8NOew3FL9r, inst:2O2Fr%24t4X7Zf8NOew3FL8v, inst:1hOSvn6df7F8_7GcBWlSDm.
+inst:0BTBFw6f90Nfh9rP1dlXre bot:adjacentElement inst:3bXiCStxP6Fgxdej%24yc55E, inst:1hOSvn6df7F8_7GcBWlRrM, inst:1hOSvn6df7F8_7GcBWlRrM, inst:2OBrcmyk58NupXoVOHUt0F, inst:2O2Fr%24t4X7Zf8NOew3FL9r, inst:2OBrcmyk58NupXoVOHUvPL, inst:1aj%24VJZFn2TxepZUBcKpac, inst:1aj%24VJZFn2TxepZUBcKpZw, inst:1aj%24VJZFn2TxepZUBcKpac, inst:0dxE1Sy6nDqfpDb5vIMNiA, inst:2O2Fr%24t4X7Zf8NOew3FLCm.
+inst:0BTBFw6f90Nfh9rP1dlXrb bot:adjacentElement inst:3bXiCStxP6Fgxdej%24yc55m, inst:1hOSvn6df7F8_7GcBWlRrM, inst:1hOSvn6df7F8_7GcBWlRrM, inst:2OBrcmyk58NupXoVOHUtBP, inst:2O2Fr%24t4X7Zf8NOew3FKau, inst:2O2Fr%24t4X7Zf8NOew3FKau, inst:2O2Fr%24t4X7Zf8NOew3FLOH, inst:1hOSvn6df7F8_7GcBWlS2V, inst:1hOSvn6df7F8_7GcBWlS_W, inst:2O2Fr%24t4X7Zf8NOew3FLR9, inst:1l0GAJtRTFv8%24zmKJOH4aS, inst:1hOSvn6df7F8_7GcBWlS2V, inst:2O2Fr%24t4X7Zf8NOew3FL8v, inst:1hOSvn6df7F8_7GcBWlSDm, inst:2O2Fr%24t4X7Zf8NOew3FL8v, inst:1hOSvn6df7F8_7GcBWlSDm, inst:2O2Fr%24t4X7Zf8NOew3FL9r, inst:2O2Fr%24t4X7Zf8NOew3FLCm, inst:2O2Fr%24t4X7Zf8NOew3FLCm.
+inst:0BTBFw6f90Nfh9rP1dlXrc bot:adjacentElement inst:3bXiCStxP6Fgxdej%24yc554, inst:1hOSvn6df7F8_7GcBWlRrM, inst:1hOSvn6df7F8_7GcBWlRrM, inst:2OBrcmyk58NupXoVOHUtDX, inst:2O2Fr%24t4X7Zf8NOew3FKau, inst:2O2Fr%24t4X7Zf8NOew3FLEJ, inst:2O2Fr%24t4X7Zf8NOew3FLEJ, inst:2O2Fr%24t4X7Zf8NOew3FL9r, inst:2O2Fr%24t4X7Zf8NOew3FL96, inst:2OBrcmyk58NupXoVOHUvVV, inst:2O2Fr%24t4X7Zf8NOew3FLR9, inst:1l0GAJtRTFv8%24zmKJOH4pU, inst:1l0GAJtRTFv8%24zmKJOH4hv, inst:2O2Fr%24t4X7Zf8NOew3FLQD, inst:1l0GAJtRTFv8%24zmKJOH4pU.
+inst:0BTBFw6f90Nfh9rP1dl_CZ bot:adjacentElement inst:3bXiCStxP6Fgxdej%24yc5T8, inst:2O2Fr%24t4X7Zf8NOew3FK4F, inst:2OBrcmyk58NupXoVOHUtgP, inst:2O2Fr%24t4X7Zf8NOew3FNtn, inst:1s1jVhK8z0pgKYcr9jt781, inst:1hOSvn6df7F8_7GcBWlR72, inst:2O2Fr%24t4X7Zf8NOew3FNld, inst:2O2Fr%24t4X7Zf8NOew3FNqI, inst:1hOSvn6df7F8_7GcBWlRLx.
+inst:0BTBFw6f90Nfh9rP1dl_3S bot:adjacentElement inst:3bXiCStxP6Fgxdej%24yc5T8, inst:2O2Fr%24t4X7Zf8NOew3FK4F, inst:2OBrcmyk58NupXoVOHUten, inst:2O2Fr%24t4X7Zf8NOew3FNqI, inst:1hOSvn6df7F8_7GcBWlRLx, inst:2O2Fr%24t4X7Zf8NOew3FNau, inst:0iEHWY1%24XA8eQeeULq4jpl, inst:0iEHWY1%24XA8eQeeULq4jZ1.
+inst:0BTBFw6f90Nfh9rP1dl_3P bot:adjacentElement inst:3bXiCStxP6Fgxdej%24yc5T8, inst:3bXiCStxP6Fgxdej%24yc503, inst:3bXiCStxP6Fgxdej%24yc50B, inst:2O2Fr%24t4X7Zf8NOew3FK4F, inst:2O2Fr%24t4X7Zf8NOew3FK4F, inst:2OBrcmyk58NupXoVOHUtju, inst:2O2Fr%24t4X7Zf8NOew3FNau, inst:1hOSvn6df7F8_7GcBWlS9F, inst:2O2Fr%24t4X7Zf8NOew3FKRi, inst:0iEHWY1%24XA8eQeeULq4j_U, inst:0iEHWY1%24XA8eQeeULq4j_U, inst:0iEHWY1%24XA8eQeeULq4jpl.
+inst:0BTBFw6f90Nfh9rP1dl_3Q bot:adjacentElement inst:3bXiCStxP6Fgxdej%24yc5T8, inst:2O2Fr%24t4X7Zf8NOew3FK4F, inst:2O2Fr%24t4X7Zf8NOew3FK4F, inst:2O2Fr%24t4X7Zf8NOew3FK4F, inst:2OBrcmyk58NupXoVOHUtgP, inst:2O2Fr%24t4X7Zf8NOew3FNtn, inst:2O2Fr%24t4X7Zf8NOew3FNhv, inst:1hOSvn6df7F8_7GcBWlRH8, inst:2O2Fr%24t4X7Zf8NOew3FKRi, inst:2O2Fr%24t4X7Zf8NOew3FNau, inst:1hOSvn6df7F8_7GcBWlS9F, inst:2O2Fr%24t4X7Zf8NOew3FNau, inst:2O2Fr%24t4X7Zf8NOew3FNld.
+inst:0BTBFw6f90Nfh9rP1dl_3G bot:adjacentElement inst:1hOSvn6df7F8_7GcBWlRqU, inst:1hOSvn6df7F8_7GcBWlRqU, inst:1hOSvn6df7F8_7GcBWlRqU, inst:1hOSvn6df7F8_7GcBWlRqU, inst:2OBrcmyk58NupXoVOHUt8s, inst:3bXiCStxP6Fgxdej%24yc55c, inst:2O2Fr%24t4X7Zf8NOew3FLPP, inst:2O2Fr%24t4X7Zf8NOew3FLJd, inst:2OBrcmyk58NupXoVOHUuXp, inst:2O2Fr%24t4X7Zf8NOew3FLIE, inst:2O2Fr%24t4X7Zf8NOew3FLIE, inst:2O2Fr%24t4X7Zf8NOew3FLIE, inst:2OBrcmyk58NupXoVOHUvR4, inst:2O2Fr%24t4X7Zf8NOew3FLIE, inst:2O2Fr%24t4X7Zf8NOew3FLTF, inst:1hOSvn6df7F8_7GcBWlSFK.
+inst:0BTBFw6f90Nfh9rP1dl_3C bot:adjacentElement inst:3bXiCStxP6Fgxdej%24yc55U, inst:1hOSvn6df7F8_7GcBWlRqU, inst:1hOSvn6df7F8_7GcBWlRqU, inst:2OBrcmyk58NupXoVOHUt2f, inst:2O2Fr%24t4X7Zf8NOew3FLIE, inst:2OBrcmyk58NupXoVOHUvR4, inst:1aj%24VJZFn2TxepZUBcKpvt, inst:1aj%24VJZFn2TxepZUBcKp%24i, inst:0dxE1Sy6nDqfpDb5vIMN_Z, inst:2O2Fr%24t4X7Zf8NOew3FLMr.
+inst:0BTBFw6f90Nfh9rP1dl_39 bot:adjacentElement inst:3bXiCStxP6Fgxdej%24yc52o, inst:1hOSvn6df7F8_7GcBWlRqU, inst:1hOSvn6df7F8_7GcBWlRqU, inst:2OBrcmyk58NupXoVOHUtC0, inst:2O2Fr%24t4X7Zf8NOew3FKau, inst:2O2Fr%24t4X7Zf8NOew3FLQD, inst:1hOSvn6df7F8_7GcBWlSga, inst:1hOSvn6df7F8_7GcBWlSXO, inst:2O2Fr%24t4X7Zf8NOew3FLPP, inst:1l0GAJtRTFv8%24zmKJOH4ZZ, inst:1hOSvn6df7F8_7GcBWlSga, inst:2O2Fr%24t4X7Zf8NOew3FLTF, inst:1hOSvn6df7F8_7GcBWlSFK, inst:2O2Fr%24t4X7Zf8NOew3FLTF, inst:1hOSvn6df7F8_7GcBWlSFK, inst:2O2Fr%24t4X7Zf8NOew3FLIE, inst:2O2Fr%24t4X7Zf8NOew3FLMr, inst:2O2Fr%24t4X7Zf8NOew3FLMr, inst:2O2Fr%24t4X7Zf8NOew3FKau.
+inst:0BTBFw6f90Nfh9rP1dl_3A bot:adjacentElement inst:3bXiCStxP6Fgxdej%24yc55k, inst:1hOSvn6df7F8_7GcBWlRqU, inst:1hOSvn6df7F8_7GcBWlRqU, inst:2OBrcmyk58NupXoVOHUt8F, inst:2O2Fr%24t4X7Zf8NOew3FKau, inst:2O2Fr%24t4X7Zf8NOew3FLKI, inst:2O2Fr%24t4X7Zf8NOew3FLKI, inst:2O2Fr%24t4X7Zf8NOew3FLIE, inst:2O2Fr%24t4X7Zf8NOew3FLJd, inst:2OBrcmyk58NupXoVOHUuXp, inst:2O2Fr%24t4X7Zf8NOew3FLPP, inst:1l0GAJtRTFv8%24zmKJOH4%24e, inst:1l0GAJtRTFv8%24zmKJOH4qs, inst:2O2Fr%24t4X7Zf8NOew3FLOH, inst:1l0GAJtRTFv8%24zmKJOH4%24e.
+inst:2gRXFgjRn2HPE%24YoDLX3FV bot:adjacentElement inst:3bXiCStxP6Fgxdej%24yc55E, inst:1hOSvn6df7F8_7GcBWlRrM, inst:2OBrcmyk58NupXoVOHUt0F, inst:2O2Fr%24t4X7Zf8NOew3FL9r, inst:1aj%24VJZFn2TxepZUBcKpac, inst:2O2Fr%24t4X7Zf8NOew3FLEJ, inst:0dxE1Sy6nDqfpDb5vIMNiA, inst:1aj%24VJZFn2TxepZUBcKpZw, inst:1aj%24VJZFn2TxepZUBcKpac.
+inst:2gRXFgjRn2HPE%24YoDLX3FC bot:adjacentElement inst:3bXiCStxP6Fgxdej%24yc55U, inst:1hOSvn6df7F8_7GcBWlRqU, inst:2OBrcmyk58NupXoVOHUt2f, inst:2O2Fr%24t4X7Zf8NOew3FLIE, inst:2O2Fr%24t4X7Zf8NOew3FLKI, inst:0dxE1Sy6nDqfpDb5vIMN_Z, inst:1aj%24VJZFn2TxepZUBcKpvt, inst:1aj%24VJZFn2TxepZUBcKp%24i.
+inst:10mjSDZJj9gPS2PrQaxa3z bot:adjacentElement inst:3bXiCStxP6Fgxdej%24yc55M, inst:1hOSvn6df7F8_7GcBWlRrM, inst:2OBrcmyk58NupXoVOHUtxr, inst:3bXiCStxP6Fgxdej%24yc50n, inst:2O2Fr%24t4X7Zf8NOew3FNqI, inst:2O2Fr%24t4X7Zf8NOew3FNbT.
+inst:10mjSDZJj9gPS2PrQaxa4o bot:adjacentElement inst:3bXiCStxP6Fgxdej%24yc55c, inst:1hOSvn6df7F8_7GcBWlRqU, inst:2OBrcmyk58NupXoVOHUtgP, inst:3bXiCStxP6Fgxdej%24yc5T8, inst:2O2Fr%24t4X7Zf8NOew3FNhv, inst:2O2Fr%24t4X7Zf8NOew3FKRi.
+inst:0pNy6pOyf7JPmXRLgxs3sW bot:adjacentElement inst:0jf0rYHfX3RAB3bSIRjmmy, inst:0jf0rYHfX3RAB3bSIRjmr1, inst:0jf0rYHfX3RAB3bSIRjmoa, inst:0jf0rYHfX3RAB3bSIRjmpw.
+inst:0BTBFw6f90Nfh9rP1dlXr2 bot:containsElement inst:2OBrcmyk58NupXoVOHUtOy, inst:2OBrcmyk58NupXoVOHUtO%24, inst:2OBrcmyk58NupXoVOHUtO_, inst:2OBrcmyk58NupXoVOHUtOv, inst:2OBrcmyk58NupXoVOHUtOu.
+inst:0BTBFw6f90Nfh9rP1dlXr%24 bot:containsElement inst:2OBrcmyk58NupXoVOHUvqp, inst:2OBrcmyk58NupXoVOHUvqo, inst:2OBrcmyk58NupXoVOHUvqz, inst:2OBrcmyk58NupXoVOHUvqy, inst:2OBrcmyk58NupXoVOHUvq%24, inst:2OBrcmyk58NupXoVOHUvq_, inst:2OBrcmyk58NupXoVOHUvqu, inst:2OBrcmyk58NupXoVOHUvqx, inst:2OBrcmyk58NupXoVOHUvqw, inst:2OBrcmyk58NupXoVOHUvr5, inst:2OBrcmyk58NupXoVOHUvr4, inst:0iEHWY1%24XA8eQeeULq4j7w, inst:0iEHWY1%24XA8eQeeULq4jOM, inst:0iEHWY1%24XA8eQeeULq4jQJ, inst:0iEHWY1%24XA8eQeeULq4jTB.
+inst:0BTBFw6f90Nfh9rP1dlXru bot:containsElement inst:2gRXFgjRn2HPE%24YoDLX0vP.
+inst:0BTBFw6f90Nfh9rP1dlXre bot:containsElement inst:2gRXFgjRn2HPE%24YoDLX0rb, inst:2gRXFgjRn2HPE%24YoDLX0ra.
+inst:0BTBFw6f90Nfh9rP1dlXrb bot:containsElement inst:0wkEuT1wr1kOyafLY4vy3H, inst:0wkEuT1wr1kOyafLY4vy3G, inst:2OBrcmyk58NupXoVOHUtEr, inst:2kvhekJrnDjRw0CDkKW%24fQ.
+inst:0BTBFw6f90Nfh9rP1dlXrc bot:containsElement inst:0wkEuT1wr1kOyafLY4vy4m, inst:0wkEuT1wr1kOyafLY4vy4F, inst:2OBrcmyk58NupXoVOHUtI8, inst:2kvhekJrnDjRw0CDkKW%24JW.
+inst:0BTBFw6f90Nfh9rP1dl_CZ bot:containsElement inst:2OBrcmyk58NupXoVOHUshs, inst:2OBrcmyk58NupXoVOHUsc7, inst:2OBrcmyk58NupXoVOHUsab, inst:2OBrcmyk58NupXoVOHUsbY, inst:2OBrcmyk58NupXoVOHUtVQ.
+inst:0BTBFw6f90Nfh9rP1dl_3S bot:containsElement inst:0wkEuT1wr1kOyafLY4vyMO, inst:0wkEuT1wr1kOyafLY4vyOn, inst:2OBrcmyk58NupXoVOHUvGQ, inst:2OBrcmyk58NupXoVOHUvH8, inst:2OBrcmyk58NupXoVOHUv88, inst:2OBrcmyk58NupXoVOHUv3h, inst:2OBrcmyk58NupXoVOHUvup, inst:2OBrcmyk58NupXoVOHUvuo, inst:2OBrcmyk58NupXoVOHUvs2, inst:2OBrcmyk58NupXoVOHUvsm, inst:2OBrcmyk58NupXoVOHUvtA, inst:0iEHWY1%24XA8eQeeULq4jJA, inst:0iEHWY1%24XA8eQeeULq4jKO, inst:0iEHWY1%24XA8eQeeULq4jMl, inst:0iEHWY1%24XA8eQeeULq4ien.
+inst:0BTBFw6f90Nfh9rP1dl_3C bot:containsElement inst:2gRXFgjRn2HPE%24YoDLX0mp, inst:2gRXFgjRn2HPE%24YoDLX0q2.
+inst:0BTBFw6f90Nfh9rP1dl_39 bot:containsElement inst:0wkEuT1wr1kOyafLY4vy6l, inst:0wkEuT1wr1kOyafLY4vy6k, inst:2OBrcmyk58NupXoVOHUtM4, inst:2kvhekJrnDjRw0CDkKW%24UD.
+inst:0BTBFw6f90Nfh9rP1dl_3A bot:containsElement inst:0wkEuT1wr1kOyafLY4vyu%24, inst:0wkEuT1wr1kOyafLY4vy_8, inst:2OBrcmyk58NupXoVOHUtHN, inst:2kvhekJrnDjRw0CDkKW%24KL.
+inst:1xS3BCk291UvhgP2dvNMKI bot:hasElement inst:2O2Fr%24t4X7Zf8NOew3FNtn, inst:2O2Fr%24t4X7Zf8NOew3FNqI, inst:2O2Fr%24t4X7Zf8NOew3FNr2, inst:2O2Fr%24t4X7Zf8NOew3FNhv, inst:2O2Fr%24t4X7Zf8NOew3FNld, inst:2O2Fr%24t4X7Zf8NOew3FNau, inst:2O2Fr%24t4X7Zf8NOew3FNbT, inst:2O2Fr%24t4X7Zf8NOew3FKRi, inst:2O2Fr%24t4X7Zf8NOew3FKRH, inst:2O2Fr%24t4X7Zf8NOew3FKST, inst:2O2Fr%24t4X7Zf8NOew3FKIu, inst:2O2Fr%24t4X7Zf8NOew3FKGS, inst:2O2Fr%24t4X7Zf8NOew3FK4F, inst:2O2Fr%24t4X7Zf8NOew3FKcz, inst:2O2Fr%24t4X7Zf8NOew3FLTF, inst:2O2Fr%24t4X7Zf8NOew3FL8v, inst:1hOSvn6df7F8_7GcBWlR72, inst:1hOSvn6df7F8_7GcBWlRBU, inst:1hOSvn6df7F8_7GcBWlRGQ, inst:1hOSvn6df7F8_7GcBWlRH8, inst:1hOSvn6df7F8_7GcBWlRLx, inst:1hOSvn6df7F8_7GcBWlRRL, inst:1hOSvn6df7F8_7GcBWlS8Z, inst:1hOSvn6df7F8_7GcBWlS9F, inst:0wkEuT1wr1kOyafLY4v_O1, inst:2OBrcmyk58NupXoVOHUtxr, inst:2OBrcmyk58NupXoVOHUtoa, inst:2OBrcmyk58NupXoVOHUtjR, inst:2OBrcmyk58NupXoVOHUtju, inst:2OBrcmyk58NupXoVOHUtgP, inst:2OBrcmyk58NupXoVOHUten, inst:1s1jVhK8z0pgKYcr9jt781, inst:1s1jVhK8z0pgKYcr9jt7AB, inst:3bXiCStxP6Fgxdej%24yc5T8, inst:3bXiCStxP6Fgxdej%24yc503, inst:3bXiCStxP6Fgxdej%24yc50B, inst:3bXiCStxP6Fgxdej%24yc50U, inst:3bXiCStxP6Fgxdej%24yc50n, inst:0iEHWY1%24XA8eQeeULq4jZ1, inst:0iEHWY1%24XA8eQeeULq4j_U, inst:0iEHWY1%24XA8eQeeULq4jpl, inst:0iEHWY1%24XA8eQeeULq4jDb, inst:0iEHWY1%24XA8eQeeULq4jE6, inst:21ldoMpbP4VfsJ0XGY_34d, inst:1aj%24VJZFn2TxepZUBcKpee, inst:1aj%24VJZFn2TxepZUBcKphf, inst:2OrWItJ6zAwBNp0OUxK_l8, inst:2OrWItJ6zAwBNp0OUxK%248W, inst:2OrWItJ6zAwBNp0OUxK%24Dv, inst:2OrWItJ6zAwBNp0OUxK%24Du, inst:1CZILmCaHETO8tf3SgGEWh, inst:1CZILmCaHETO8tf3SgGEXu.
+inst:1xS3BCk291UvhgP2dvNMQJ bot:hasElement inst:2O2Fr%24t4X7Zf8NOew3FKau, inst:2O2Fr%24t4X7Zf8NOew3FLQD, inst:2O2Fr%24t4X7Zf8NOew3FLR9, inst:2O2Fr%24t4X7Zf8NOew3FLOH, inst:2O2Fr%24t4X7Zf8NOew3FLPP, inst:2O2Fr%24t4X7Zf8NOew3FLIE, inst:2O2Fr%24t4X7Zf8NOew3FLJd, inst:2O2Fr%24t4X7Zf8NOew3FLMr, inst:2O2Fr%24t4X7Zf8NOew3FLKI, inst:2O2Fr%24t4X7Zf8NOew3FL9r, inst:2O2Fr%24t4X7Zf8NOew3FL96, inst:2O2Fr%24t4X7Zf8NOew3FLEJ, inst:2O2Fr%24t4X7Zf8NOew3FLCm, inst:1hOSvn6df7F8_7GcBWlRqU, inst:1hOSvn6df7F8_7GcBWlRrM, inst:1hOSvn6df7F8_7GcBWlSXO, inst:1hOSvn6df7F8_7GcBWlSga, inst:1hOSvn6df7F8_7GcBWlSp1, inst:1hOSvn6df7F8_7GcBWlSnC, inst:1hOSvn6df7F8_7GcBWlS_W, inst:1hOSvn6df7F8_7GcBWlS2V, inst:1hOSvn6df7F8_7GcBWlS1M, inst:1hOSvn6df7F8_7GcBWlS4Q, inst:1hOSvn6df7F8_7GcBWlSFK, inst:1hOSvn6df7F8_7GcBWlSDm, inst:2OBrcmyk58NupXoVOHUuXp, inst:2OBrcmyk58NupXoVOHUvVV, inst:2OBrcmyk58NupXoVOHUvR4, inst:2OBrcmyk58NupXoVOHUvPL, inst:2OBrcmyk58NupXoVOHUtC0, inst:2OBrcmyk58NupXoVOHUtDX, inst:2OBrcmyk58NupXoVOHUtBP, inst:2OBrcmyk58NupXoVOHUt8F, inst:2OBrcmyk58NupXoVOHUt8s, inst:2OBrcmyk58NupXoVOHUt5W, inst:2OBrcmyk58NupXoVOHUt2f, inst:2OBrcmyk58NupXoVOHUt0F, inst:1l0GAJtRTFv8%24zmKJOH4%24e, inst:1l0GAJtRTFv8%24zmKJOH4u1, inst:1l0GAJtRTFv8%24zmKJOH4qs, inst:1l0GAJtRTFv8%24zmKJOH4oq, inst:1l0GAJtRTFv8%24zmKJOH4pU, inst:1l0GAJtRTFv8%24zmKJOH4kJ, inst:1l0GAJtRTFv8%24zmKJOH4gQ, inst:1l0GAJtRTFv8%24zmKJOH4hv, inst:1l0GAJtRTFv8%24zmKJOH4aS, inst:1l0GAJtRTFv8%24zmKJOH4ZZ, inst:3bXiCStxP6Fgxdej%24yc52o, inst:3bXiCStxP6Fgxdej%24yc554, inst:3bXiCStxP6Fgxdej%24yc55E, inst:3bXiCStxP6Fgxdej%24yc55M, inst:3bXiCStxP6Fgxdej%24yc55U, inst:3bXiCStxP6Fgxdej%24yc55c, inst:3bXiCStxP6Fgxdej%24yc55k, inst:3bXiCStxP6Fgxdej%24yc55m, inst:0dxE1Sy6nDqfpDb5vIMNiA, inst:0dxE1Sy6nDqfpDb5vIMN_Z, inst:1aj%24VJZFn2TxepZUBcKpvt, inst:1aj%24VJZFn2TxepZUBcKp%24i, inst:1aj%24VJZFn2TxepZUBcKpZw, inst:1aj%24VJZFn2TxepZUBcKpac, inst:2OrWItJ6zAwBNp0OUxK%24Bq, inst:2OrWItJ6zAwBNp0OUxK%24CR, inst:2OrWItJ6zAwBNp0OUxK%24Dx, inst:2OrWItJ6zAwBNp0OUxK%24Dw, inst:3Y4YRln2r91vflHcHE5IVS, inst:3Y4YRln2r91vflHcHE5IVT, inst:3Y4YRln2r91vflHcHE5IVI, inst:3Y4YRln2r91vflHcHE5IVJ, inst:3Y4YRln2r91vflHcHE5ITp, inst:3Y4YRln2r91vflHcHE5ITm, inst:3Y4YRln2r91vflHcHE5ITn, inst:3Y4YRln2r91vflHcHE5ITs.
+inst:1xS3BCk291UvhgP2dvNsgp bot:hasElement inst:2O2Fr%24t4X7Zf8NOew3FK80, inst:2O2Fr%24t4X7Zf8NOew3FK9N, inst:2O2Fr%24t4X7Zf8NOew3FKEr, inst:2O2Fr%24t4X7Zf8NOew3FKE5, inst:2O2Fr%24t4X7Zf8NOew3FK3E, inst:2O2Fr%24t4X7Zf8NOew3FK04, inst:2O2Fr%24t4X7Zf8NOew3FK1b, inst:0kF45Qs8L9PAM9kmb1lT5d, inst:0kF45Qs8L9PAM9kmb1lT5l, inst:0kF45Qs8L9PAM9kmb1lT5t, inst:0kF45Qs8L9PAM9kmb1lT5%24, inst:0kF45Qs8L9PAM9kmb1lT2B, inst:0kF45Qs8L9PAM9kmb1lT2N, inst:0kF45Qs8L9PAM9kmb1lT2Z.
+inst:1xS3BCk291UvhgP2dvNtSE bot:hasElement inst:0jf0rYHfX3RAB3bSIRjmxl, inst:0jf0rYHfX3RAB3bSIRjmmy, inst:0jf0rYHfX3RAB3bSIRjmpw, inst:0jf0rYHfX3RAB3bSIRjmoa, inst:0jf0rYHfX3RAB3bSIRjmr1, inst:1Eo2%24BaHX42AEkDvQQDocD, inst:1Eo2%24BaHX42AEkDvQQDoy2.
+inst:2O2Fr%24t4X7Zf8NOew3FKau bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FLQD.
+inst:2O2Fr%24t4X7Zf8NOew3FNau bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FKRi.
+inst:2O2Fr%24t4X7Zf8NOew3FKau bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FLOH.
+inst:2O2Fr%24t4X7Zf8NOew3FNtn bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FNld.
+inst:2O2Fr%24t4X7Zf8NOew3FNqI bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FNbT, inst:0iEHWY1%24XA8eQeeULq4jZ1.
+inst:2O2Fr%24t4X7Zf8NOew3FNr2 bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FKGS.
+inst:2O2Fr%24t4X7Zf8NOew3FNhv bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FKRi, inst:0iEHWY1%24XA8eQeeULq4jE6.
+inst:2O2Fr%24t4X7Zf8NOew3FNbT bot:adjacentElement inst:0iEHWY1%24XA8eQeeULq4jDb.
+inst:2O2Fr%24t4X7Zf8NOew3FNau bot:adjacentElement inst:0iEHWY1%24XA8eQeeULq4jpl.
+inst:2O2Fr%24t4X7Zf8NOew3FNbT bot:adjacentElement inst:1aj%24VJZFn2TxepZUBcKphf.
+inst:2O2Fr%24t4X7Zf8NOew3FKRi bot:adjacentElement inst:0iEHWY1%24XA8eQeeULq4j_U, inst:1aj%24VJZFn2TxepZUBcKpee.
+inst:2O2Fr%24t4X7Zf8NOew3FKIu bot:adjacentElement inst:0iEHWY1%24XA8eQeeULq4jDb, inst:0iEHWY1%24XA8eQeeULq4jE6.
+inst:2O2Fr%24t4X7Zf8NOew3FK9N bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FK3E.
+inst:2O2Fr%24t4X7Zf8NOew3FKE5 bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FK04.
+inst:2O2Fr%24t4X7Zf8NOew3FKau bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FLKI, inst:2O2Fr%24t4X7Zf8NOew3FLEJ.
+inst:2O2Fr%24t4X7Zf8NOew3FLR9 bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FL8v.
+inst:2O2Fr%24t4X7Zf8NOew3FLTF bot:adjacentElement inst:1aj%24VJZFn2TxepZUBcKpee.
+inst:2O2Fr%24t4X7Zf8NOew3FLKI bot:adjacentElement inst:0dxE1Sy6nDqfpDb5vIMN_Z.
+inst:2O2Fr%24t4X7Zf8NOew3FL8v bot:adjacentElement inst:1aj%24VJZFn2TxepZUBcKphf.
+inst:2O2Fr%24t4X7Zf8NOew3FL9r bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FLCm.
+inst:2O2Fr%24t4X7Zf8NOew3FLEJ bot:adjacentElement inst:0dxE1Sy6nDqfpDb5vIMNiA.
+inst:0dxE1Sy6nDqfpDb5vIMNiA bot:adjacentElement inst:1aj%24VJZFn2TxepZUBcKpZw.
+inst:0dxE1Sy6nDqfpDb5vIMN_Z bot:adjacentElement inst:1aj%24VJZFn2TxepZUBcKpvt.
+inst:2O2Fr%24t4X7Zf8NOew3FKau bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FLMr, inst:2O2Fr%24t4X7Zf8NOew3FLCm.
+inst:2O2Fr%24t4X7Zf8NOew3FLR9 bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FL96.
+inst:2O2Fr%24t4X7Zf8NOew3FLPP bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FLTF.
+inst:2O2Fr%24t4X7Zf8NOew3FLIE bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FLMr.
+inst:2O2Fr%24t4X7Zf8NOew3FLPP bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FLJd.
+inst:2O2Fr%24t4X7Zf8NOew3FLIE bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FLKI, inst:1aj%24VJZFn2TxepZUBcKpvt.
+inst:2O2Fr%24t4X7Zf8NOew3FLMr bot:adjacentElement inst:0dxE1Sy6nDqfpDb5vIMN_Z.
+inst:2O2Fr%24t4X7Zf8NOew3FL9r bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FLEJ, inst:1aj%24VJZFn2TxepZUBcKpZw.
+inst:2O2Fr%24t4X7Zf8NOew3FLCm bot:adjacentElement inst:0dxE1Sy6nDqfpDb5vIMNiA.
+inst:2O2Fr%24t4X7Zf8NOew3FLQD bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FLPP.
+inst:0jf0rYHfX3RAB3bSIRjmmy bot:adjacentElement inst:0jf0rYHfX3RAB3bSIRjmr1.
+inst:3Y4YRln2r91vflHcHE5IVS bot:adjacentElement inst:3Y4YRln2r91vflHcHE5IVT.
+inst:3Y4YRln2r91vflHcHE5IVT bot:adjacentElement inst:3Y4YRln2r91vflHcHE5IVI.
+inst:3Y4YRln2r91vflHcHE5IVI bot:adjacentElement inst:3Y4YRln2r91vflHcHE5IVJ.
+inst:3Y4YRln2r91vflHcHE5ITp bot:adjacentElement inst:3Y4YRln2r91vflHcHE5ITm.
+inst:3Y4YRln2r91vflHcHE5ITm bot:adjacentElement inst:3Y4YRln2r91vflHcHE5ITn.
+inst:3Y4YRln2r91vflHcHE5ITn bot:adjacentElement inst:3Y4YRln2r91vflHcHE5ITs.
+inst:2O2Fr%24t4X7Zf8NOew3FK80 bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FK9N.
+inst:2O2Fr%24t4X7Zf8NOew3FK9N bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FKEr.
+inst:2O2Fr%24t4X7Zf8NOew3FKEr bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FKE5.
+inst:2O2Fr%24t4X7Zf8NOew3FK04 bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FK1b.
+inst:2O2Fr%24t4X7Zf8NOew3FLQD bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FLR9.
+inst:2O2Fr%24t4X7Zf8NOew3FLR9 bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FLOH.
+inst:2O2Fr%24t4X7Zf8NOew3FLOH bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FLPP.
+inst:2O2Fr%24t4X7Zf8NOew3FLTF bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FLIE.
+inst:2O2Fr%24t4X7Zf8NOew3FLIE bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FLJd.
+inst:2O2Fr%24t4X7Zf8NOew3FL8v bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FL9r.
+inst:2O2Fr%24t4X7Zf8NOew3FL9r bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FL96.
+inst:0jf0rYHfX3RAB3bSIRjmmy bot:adjacentElement inst:0jf0rYHfX3RAB3bSIRjmpw.
+inst:0jf0rYHfX3RAB3bSIRjmpw bot:adjacentElement inst:0jf0rYHfX3RAB3bSIRjmoa.
+inst:0jf0rYHfX3RAB3bSIRjmoa bot:adjacentElement inst:0jf0rYHfX3RAB3bSIRjmr1.
+inst:0iEHWY1%24XA8eQeeULq4jZ1 bot:adjacentElement inst:0iEHWY1%24XA8eQeeULq4jpl.
+inst:0iEHWY1%24XA8eQeeULq4j_U bot:adjacentElement inst:0iEHWY1%24XA8eQeeULq4jpl.
+inst:3Y4YRln2r91vflHcHE5IVS bot:adjacentElement inst:3Y4YRln2r91vflHcHE5IVJ.
+inst:3Y4YRln2r91vflHcHE5ITp bot:adjacentElement inst:3Y4YRln2r91vflHcHE5ITs.
+inst:2O2Fr%24t4X7Zf8NOew3FNbT bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FKST.
+inst:2O2Fr%24t4X7Zf8NOew3FKST bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FKIu.
+inst:2O2Fr%24t4X7Zf8NOew3FKRi bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FKRH.
+inst:2O2Fr%24t4X7Zf8NOew3FNtn bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FNhv.
+inst:2O2Fr%24t4X7Zf8NOew3FK80 bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FKE5.
+inst:2O2Fr%24t4X7Zf8NOew3FLQD bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FLPP.
+inst:2O2Fr%24t4X7Zf8NOew3FKIu bot:adjacentElement inst:0iEHWY1%24XA8eQeeULq4jDb, inst:0iEHWY1%24XA8eQeeULq4jE6.
+inst:2O2Fr%24t4X7Zf8NOew3FNtn bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FNqI.
+inst:2O2Fr%24t4X7Zf8NOew3FNqI bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FNr2.
+inst:2O2Fr%24t4X7Zf8NOew3FNr2 bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FNhv.
+inst:2O2Fr%24t4X7Zf8NOew3FNtn bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FNhv.
+inst:2O2Fr%24t4X7Zf8NOew3FNbT bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FKRH.
+inst:2O2Fr%24t4X7Zf8NOew3FK3E bot:adjacentElement inst:2O2Fr%24t4X7Zf8NOew3FK1b.
+inst:0iEHWY1%24XA8eQeeULq4jZ1 bot:adjacentElement inst:0iEHWY1%24XA8eQeeULq4j_U.
+inst:0iEHWY1%24XA8eQeeULq4jDb bot:adjacentElement inst:0iEHWY1%24XA8eQeeULq4jE6.
+inst:1xS3BCk291UvhgP2dvNMKI bot:hasSpace inst:0BTBFw6f90Nfh9rP1dlXr2, inst:0BTBFw6f90Nfh9rP1dlXr%24, inst:0BTBFw6f90Nfh9rP1dlXru, inst:0BTBFw6f90Nfh9rP1dlXrr, inst:0BTBFw6f90Nfh9rP1dl_CZ, inst:0BTBFw6f90Nfh9rP1dl_3S, inst:0BTBFw6f90Nfh9rP1dl_3P, inst:0BTBFw6f90Nfh9rP1dl_3Q, inst:10mjSDZJj9gPS2PrQaxa3z, inst:10mjSDZJj9gPS2PrQaxa4o.
+inst:1xS3BCk291UvhgP2dvNMQJ bot:hasSpace inst:0BTBFw6f90Nfh9rP1dlXri, inst:0BTBFw6f90Nfh9rP1dlXre, inst:0BTBFw6f90Nfh9rP1dlXrb, inst:0BTBFw6f90Nfh9rP1dlXrc, inst:0BTBFw6f90Nfh9rP1dl_3G, inst:0BTBFw6f90Nfh9rP1dl_3C, inst:0BTBFw6f90Nfh9rP1dl_39, inst:0BTBFw6f90Nfh9rP1dl_3A, inst:2gRXFgjRn2HPE%24YoDLX3FV, inst:2gRXFgjRn2HPE%24YoDLX3FC.
+inst:1xS3BCk291UvhgP2dvNtSE bot:hasSpace inst:0pNy6pOyf7JPmXRLgxs3sW.
+inst:1xS3BCk291UvhgP2a6eflK bot:hasStorey inst:1xS3BCk291UvhgP2dvNMKI, inst:1xS3BCk291UvhgP2dvNMQJ, inst:1xS3BCk291UvhgP2dvNsgp, inst:1xS3BCk291UvhgP2dvNtSE.
+inst:1xS3BCk291UvhgP2a6eflN bot:hasBuilding inst:1xS3BCk291UvhgP2a6eflK.

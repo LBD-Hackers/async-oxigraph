@@ -11,6 +11,7 @@ export interface WorkerResult{
     message: string;
     data?: any;
     error?: string;
+    query?: string;
 }
 
 export interface InitPayload{
@@ -53,4 +54,15 @@ export enum RDFMimetype{
     NTRIPLES="application/n-triples",
     NQUADS="application/n-quads",
     RDFXML="application/rdf+xml"
+}
+
+export interface TemplateData {
+    [key: string]: string | number;
+}
+
+export interface QueryDefinition{
+    id: string;
+    query: string;
+    responseMimetype?: ResponseMimetype;
+    postProcessing?: any;
 }

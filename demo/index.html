@@ -97,7 +97,7 @@
     <script type="importmap">
         {
           "imports": {
-            "oxigraph": "https://unpkg.com/oxigraph@0.3.10/web.js"
+            "oxigraph": "https://unpkg.com/oxigraph@0.4.0-alpha.4/web.js"
           }
         }
     </script>
@@ -166,6 +166,7 @@ WHERE {
             const sizeInMB = (file.size / (1024 * 1024)).toFixed(2);
             messageElement.innerHTML = `Got file "${file.name}" (${sizeInMB} MB)`;
             document.getElementById("operations").style.visibility = "visible";
+            document.getElementById("get_file").style.display = "none";
         }
 
         // TRADITIONAL SYNC OXIGRAPH
@@ -189,6 +190,7 @@ WHERE {
             const t1 = new Date();
 
             await init("./assets/web_bg.wasm");
+            console.info("Oxigraph available");
 
             store = new Store();
             const graphURI = graphURIElement.value ? namedNode(graphURIElement.value) : undefined;
@@ -256,6 +258,7 @@ WHERE {
             const responseMimetype = resultMimetypeElement.value;
 
             const queryDetails = scripts.getQueryDetails(queryPanel.getValue());
+            const rawQuery = queryPanel.getValue();
             const type = queryDetails.type;
 
             // DO QUERY
@@ -283,7 +286,7 @@ WHERE {
             }
             else if (type == "query") {
                 const t3 = new Date();
-                const [res, resultCount] = scripts.processQueryResponse(results, queryDetails, responseMimetype);
+                const [res, resultCount] = scripts.processQueryResponse(results, rawQuery, queryDetails, responseMimetype);
                 results = res;
                 const t4 = new Date();
                 const postProcessingTimeInSeconds = Math.abs(t4 - t3) / 1000;

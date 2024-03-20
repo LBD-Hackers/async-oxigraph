@@ -16,7 +16,6 @@ Better documentation will come! For now, check the demo source code in `demo/ind
 
 ## Use
 
-**NB!** not on npm yet
 `npm i --save async-oxigraph`
 
 Copy `worker.js`, `scripts.bundle.js` and `web_bg.wasm` to your assets folder.
@@ -42,10 +41,4 @@ import { AsyncOxigraph } from 'async-oxigraph';
 But really, take a look at the demo :)
 
 ### Backlog
-
-#### Top priority
-1. Publish async-oxigraph library on npm
-1. Write proper documentation
-
-#### Other
 1. Support for SPARQL* in JSON-LD response of CONSTRUCT query
