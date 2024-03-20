@@ -11,7 +11,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "oxigraph": "^0.3.16",
+        "oxigraph": "0.4.0-alpha.4",
         "sparqlalgebrajs": "^4.0.5"
     },
     "devDependencies": {
